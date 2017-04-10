@@ -148,11 +148,20 @@
                 var passLeft = this.game.add.text(0, 450, 'Pass Left', {font:'15px Press Start 2p', fill: '#ffffff' });
                               passLeft.inputEnabled = true;
                               passLeft.events.onInputDown.add(movePlayer, this);
+                //
+                // var passMiddle = this.game.add.text(0, 500, 'Pass Middle', {font:'15px Press Start 2p', fill: '#ffffff' });
+                //             passPlayMiddle.inputEnabled = true;
+                //       passPlayMiddle.events.onInputDown.add(movePlayer, this);
 
-                var passMiddle = this.game.add.text(0, 500, 'Pass Middle', {font:'15px Press Start 2p', fill: '#ffffff' });
+
 
                 var passRight = this.game.add.text(0, 550, 'Pass Right', {font:'15px Press Start 2p', fill: '#ffffff' });
+                        passRight.inputEnabled = true;
+                        passRight.events.onInputDown.add(passPlayRight, this);
 
+                var passMiddle = this.game.add.text(0, 500, 'Pass Middle', {font:'15px Press Start 2p', fill: '#ffffff' });
+                        passMiddle.inputEnabled = true;
+                        passMiddle.events.onInputDown.add(passPlayMiddle, this);
 
 
 
@@ -271,8 +280,93 @@
                             break;
 
                       }
-
                     }
+                  }
+
+
+
+                    function passPlayRight(){
+
+                    var tweenA = game.add.tween(wr1).to({x: '+200'}, 3000);
+                    var tweenB = game.add.tween(wr2).to({x: '+200'}, 3000);
+                    var tweenC = game.add.tween(wr3).to({x: '+200'}, 3000);
+
+                    var tweenFootballA =game.add.tween(football).to({x: '+200'}, 3000);
+                    var tweenFootballB =game.add.tween(football).to({x: '-200'}, 3000);
+                    var tweenFootballC =game.add.tween(football).to({x: '+400'}, 3000);
+                    qbPass();
+
+                    tweenA.start();
+                    tweenB.start();
+                    tweenC.start();
+
+                    function qbPass() {
+                          var x = Math.floor((Math.random() * 3) + 1);
+                          console.log(x);
+                          switch (x){
+
+                            case 1:
+
+                                tweenFootballA.start();
+                                console.log('1');
+                                break;
+
+                            case 2:
+                                tweenFootballB.start();
+                                console.log('2');
+                                break;
+
+                            case 3:
+                                tweenFootballC.start();
+                                console.log('3');
+                                break;
+
+                          }
+
+                        }
+                      }
+
+                      function passPlayMiddle(){
+
+                      var tweenA = game.add.tween(wr1).to({x: '+200'}, 3000);
+                      var tweenB = game.add.tween(wr2).to({x: '+200'}, 3000);
+                      var tweenC = game.add.tween(wr3).to({x: '+200'}, 3000);
+
+                      var tweenFootballA =game.add.tween(football).to({x: '+200'}, 3000);
+                      var tweenFootballB =game.add.tween(football).to({x: '-200'}, 3000);
+                      var tweenFootballC =game.add.tween(football).to({x: '+400'}, 3000);
+                      qbPass();
+
+                      tweenA.start();
+                      tweenB.start();
+                      tweenC.start();
+
+                      function qbPass() {
+                            var x = Math.floor((Math.random() * 3) + 1);
+                            console.log(x);
+                            switch (x){
+
+                              case 1:
+
+                                  tweenFootballA.start();
+                                  console.log('1');
+                                  break;
+
+                              case 2:
+                                  tweenFootballB.start();
+                                  console.log('2');
+                                  break;
+
+                              case 3:
+                                  tweenFootballC.start();
+                                  console.log('3');
+                                  break;
+
+                            }
+
+                          }
+                        }
+
 
 
 
@@ -285,7 +379,6 @@
                 //
                 //
                 //       }
-                  }
 
 
   },
