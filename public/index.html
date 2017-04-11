@@ -27,8 +27,10 @@
 <script type="text/javascript">
 
 
-            var wr1, wr2, wr3, wr4, football, lineofScrimmage, yards, passing;
-             var scoreTextHome, scoreTextAway, Time, GameLog, DownLog;
+            var wr1, wr2, wr3, wr4, football, yards, passing;
+            var scoreTextHome, scoreTextAway, Time, GameLog, DownLog;
+            var offsetRG;
+
 
 
             var game = new Phaser.Game(1000, 600, Phaser.AUTO);
@@ -53,7 +55,6 @@
                       game.load.image('rg', 'public/assets/reddot.png');
                       game.load.image('rt', 'public/assets/reddot.png');
                       game.load.image('football','public/assets/football.png');
-              //        game.load.image('button', 'public/assets/button.jpg');
 
                     },
 
@@ -111,11 +112,11 @@
                   game.load.image('wr3', 'reddot.png');
                   game.load.image('wr4', 'reddot.png');
                   game.load.image('qb', 'reddot.png');
-                  game.load.image('lt', 'reddot.png');
-                  game.load.image('lg', 'reddot.png');
-                  game.load.image('ct', 'reddot.png');
-                  game.load.image('rg', 'reddot.png');
-                  game.load.image('rt', 'reddot.png');
+                  game.load.image('lt', 'bluedot.png');
+                  game.load.image('lg', 'bluedot.png');
+                  game.load.image('ct', 'bluedot.png');
+                  game.load.image('rg', 'bluedot.png');
+                  game.load.image('rt', 'bluedot.png');
                   game.load.image('football','football.png');
                   // game.load.image('button', 'public/assets/button.jpg');
 
@@ -126,7 +127,10 @@
 
 //================================HUD Graphics ===============================================================
               create: function(wr1, football){
-               game.physics.startSystem(Phaser.Physics.ARCADE);
+
+                      game.physics.startSystem(Phaser.Physics.ARCADE);
+
+
 
 
 
@@ -147,13 +151,7 @@
 
                 var passLeft = this.game.add.text(0, 450, 'Pass Left', {font:'15px Press Start 2p', fill: '#ffffff' });
                               passLeft.inputEnabled = true;
-                              passLeft.events.onInputDown.add(movePlayer, this);
-                //
-                // var passMiddle = this.game.add.text(0, 500, 'Pass Middle', {font:'15px Press Start 2p', fill: '#ffffff' });
-                //             passPlayMiddle.inputEnabled = true;
-                //       passPlayMiddle.events.onInputDown.add(movePlayer, this);
-
-
+                              passLeft.events.onInputDown.add(passPlayLeft, this);
 
                 var passRight = this.game.add.text(0, 550, 'Pass Right', {font:'15px Press Start 2p', fill: '#ffffff' });
                         passRight.inputEnabled = true;
@@ -164,10 +162,7 @@
                         passMiddle.events.onInputDown.add(passPlayMiddle, this);
 
 
-
                 var runLeft = this.game.add.text(200, 450, 'Run Left', {font:'15px Press Start 2p', fill: '#ffffff' });
-                              passLeft.inputEnabled = true;
-                              passLeft.events.onInputDown.add(movePlayer, this);
 
                 var runMiddle = this.game.add.text(200, 500, 'Run Middle', {font:'15px Press Start 2p', fill: '#ffffff' });
 
@@ -196,45 +191,66 @@
 
 
 
-                var wr1 = this.game.add.sprite(500, 200, 'wr1');
-                wr1.scale.setTo(0.3);
-
-                var wr2 = this.game.add.sprite(500,100, 'wr2');
-                wr2.scale.setTo(0.3);
-
-                var wr3 = this.game.add.sprite(500, 150, 'wr3');
-                wr3.scale.setTo(0.3);
-
-                var wr4 = this.game.add.sprite(500, 355, 'wr4');
-                wr4.scale.setTo(0.3);
+                // var wr1 = this.game.add.sprite(500, 200, 'wr1');
+                //           wr1.scale.setTo(0.3);
+                //
+                // var wr2 = this.game.add.sprite(500,100, 'wr2');
+                //           wr2.scale.setTo(0.3);
+                //
+                // var wr3 = this.game.add.sprite(500, , 'wr3');
+                //           wr3.scale.setTo(0.3);
+                //
+                // var wr4 = this.game.add.sprite(500, 355, 'wr4');
+                //           wr4.scale.setTo(0.3);
 
                 var qb = this.game.add.sprite(485, 222, 'qb');
-                qb.scale.setTo(0.3);
+                          qb.scale.setTo(0.3);
 
-                var lt = this.game.add.sprite(550, 100, 'lt');
-                lt.scale.setTo(0.3);
+                var ct = this.game.add.sprite(400, 220, 'ct');
+                          ct.scale.setTo(0.03);
 
-                var lg = this.game.add.sprite(555, 100, 'lg');
-                lg.scale.setTo(0.3);
+                var offsetRGx = ct.x;
+                var offsetRGy = ct.y+25;
 
-                var ct = this.game.add.sprite(510, 222, 'ct');
-                ct.scale.setTo(0.3);
+                var rg = this.game.add.sprite(offsetRGx, offsetRGy, 'rg');
+                          rg.scale.setTo(0.03);
 
-                var rg = this.game.add.sprite(565, 100, 'rg');
-                rg.scale.setTo(0.3);
+                var offsetRTx = ct.x
+                var offsetRTy = rg.y + 25;
 
-                var rt = this.game.add.sprite(570, 100, 'rt');
-                rt.scale.setTo(0.3);
+                var rt = this.game.add.sprite(offsetRTx, offsetRTy, 'rt');
+                          rt.scale.setTo(0.03);
 
-                var button = this.game.add.button(500, 400, 'button', movePlayer, this);
-                button.scale.setTo(0.3);
+                var offsetLGx = ct.x;
+                var offsetLGy = ct.y - 25;
+
+
+                var lg = this.game.add.sprite(offsetLGx, offsetLGy, 'lg');
+                          lg.scale.setTo(0.03);
+
+
+                var offsetLTx = ct.x;
+                var offsetLTy = lg.y - 25;
+
+                var lt = this.game.add.sprite(offsetLTx, offsetLTy ,'lt');
+                          lt.scale.setTo(0.03);
+
+
 
 
                 var football = this.game.add.sprite(500, 220, 'football');
-                football.scale.setTo(0.08);
+                              football.scale.setTo(0.08);
 
-                game.physics.arcade.enable( [wr1, wr2, wr3, wr4, football] );
-                lineofScrimmage = football.body.y;
+
+
+
+
+
+                console.log(offsetRG);
+                game.physics.arcade.enable( [ ct, rg, rt, lg, lt, football] );
+
+
+
                   // football.enableBody = true;
                 // football.physicsBodyType = Phaser.Physics.ARCADE;
 
@@ -243,7 +259,8 @@
 
 // =====================================movement==================================================================
 
-                function movePlayer(){
+
+                function passPlayLeft(){
 
                 var tweenA = game.add.tween(wr1).to({x: '+200'}, 3000);
                 var tweenB = game.add.tween(wr2).to({x: '+200'}, 3000);
@@ -257,6 +274,7 @@
                 tweenA.start();
                 tweenB.start();
                 tweenC.start();
+
 
                 function qbPass() {
                       var x = Math.floor((Math.random() * 3) + 1);
@@ -328,9 +346,15 @@
 
                       function passPlayMiddle(){
 
-                      var tweenA = game.add.tween(wr1).to({x: '+200'}, 3000);
-                      var tweenB = game.add.tween(wr2).to({x: '+200'}, 3000);
-                      var tweenC = game.add.tween(wr3).to({x: '+200'}, 3000);
+                      var tweenA = game.add.tween(wr1).to({x: '+100'}, 2000);
+                      var tweenA2 = game.add.tween(wr1).to({y: '-100'}, 2000);
+                      tweenA.chain(tweenA2);
+
+                      var tweenB = game.add.tween(wr2).to({x: '+300'}, 3000);
+
+                      var tweenC = game.add.tween(wr3).to({x: '+200'}, 2000);
+                      var tweenC2 = game.add.tween(wr3).to({y: '-200'}, 2000);
+                      tweenC.chain(tweenC2);
 
                       var tweenFootballA =game.add.tween(football).to({x: '+200'}, 3000);
                       var tweenFootballB =game.add.tween(football).to({x: '-200'}, 3000);
@@ -368,19 +392,7 @@
                         }
 
 
-
-
-                // tweenFootball.onComplete.add(logCoord, this); function logCoord() {
-                // lineofScrimmage = football.body.x;
-                //
-                // console.log(football.body.x, football.body.y, "line of scrimmage=  " + lineofScrimmage);
-                // game.state.start('HuddleState');
-                //
-                //
-                //
-                //       }
-
-
+//end of create brackets -------------
   },
 
 //============================GameButtons===========================================================
