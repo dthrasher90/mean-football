@@ -116,6 +116,19 @@
                   game.load.image('ct', 'bluedot.png');
                   game.load.image('rg', 'bluedot.png');
                   game.load.image('rt', 'bluedot.png');
+                  game.load.image('de1', 'purpledot.png');
+                  game.load.image('de2', 'purpledot.png');
+                  game.load.image('dt1', 'purpledot.png');
+                  game.load.image('dt2', 'purpledot.png');
+                  game.load.image('cb1', 'greydot.png');
+                  game.load.image('cb2', 'greydot.png');
+                  game.load.image('fs', 'greydot.png');
+                  game.load.image('ss', 'greydot.png');
+                  game.load.image('mlb', 'orangedot.png');
+                  game.load.image('wlb', 'orangedot.png');
+                  game.load.image('slb', 'orangedot.png');
+
+
                   game.load.image('football','football.png');
                   // game.load.image('button', 'public/assets/button.jpg');
 
@@ -193,88 +206,167 @@
 
 
 
+              // var dt1= game.add.sprite(500, 200, 'dt1');
+              //         dt1.scale.setTo(0.061);
 
 
 
-
-                var football = this.game.add.sprite(500, 220, 'football');
-                              football.scale.setTo(0.08);
+                // var football = this.game.add.sprite(500, 220, 'football');
+                //               football.scale.setTo(0.08);
 
                 lineOfScrimmage = football.y;
                 console.log("los = " + lineOfScrimmage);
 
 
 
-
-
-
-
-                  // football.enableBody = true;
-                // football.physicsBodyType = Phaser.Physics.ARCADE;
-
-
-
-
 // =====================================movement==================================================================
-                var tweenA;
+
 
                 function passPlayLeft(){
 
-                                        var ct = this.game.add.sprite(400, 220, 'ct');
-                                                  ct.scale.setTo(0.03);
-
-                                        var QBx = ct.x - 20;
-                                        var QBy = ct.y;
-                                        var qb = this.game.add.sprite(QBx, QBy, 'qb');
-                                                  qb.scale.setTo(0.02);
-
-                                        var RGx = ct.x;
-                                        var RGy = ct.y + 20;
-
-                                        var rg = this.game.add.sprite(RGx, RGy, 'rg');
-                                                  rg.scale.setTo(0.03);
-
-                                        var RTx = ct.x;
-                                        var RTy = rg.y + 20;
-
-                                        var rt = this.game.add.sprite(RTx, RTy, 'rt');
-                                                  rt.scale.setTo(0.03);
-
-                                        var LGx = ct.x;
-                                        var LGy = ct.y - 20;
+                     var ct = this.game.add.sprite(400, 220, 'ct');
+                              ct.scale.setTo(0.03);
 
 
-                                        var lg = this.game.add.sprite(LGx, LGy, 'lg');
-                                                  lg.scale.setTo(0.03);
+                     var QBx = ct.x - 20;
+                     var QBy = ct.y;
+                     var qb = this.game.add.sprite(QBx, QBy, 'qb');
+                               qb.scale.setTo(0.02);
 
 
-                                        var LTx = ct.x;
-                                        var LTy = lg.y - 20;
+//==================================OFFENSIVE LINE=================================
+                     var RGx = ct.x;
+                     var RGy = ct.y + 20;
+                     var rg = this.game.add.sprite(RGx, RGy, 'rg');
+                                rg.scale.setTo(0.03);
+                     var spriteTextRG = game.add.text(RGx, RGy,'RG', {font: '9px Press Start 2P'});
 
-                                        var lt = this.game.add.sprite(LTx, LTy ,'lt');
-                                                  lt.scale.setTo(0.03);
+                     var RTx = ct.x;
+                     var RTy = rg.y + 20;
+                     var rt = this.game.add.sprite(RTx, RTy, 'rt');
+                               rt.scale.setTo(0.03);
+                     var spriteTextRT = game.add.text(RTx, RTy,'RT', {font: '9px Press Start 2P'});
 
-
-                                        var WR1x = ct.x;
-                                        var WR1y = lt.y - 100;
-                                        var wr1 = this.game.add.sprite(WR1x, WR1y, 'wr1');
-                                                  wr1.scale.setTo(0.02);
-
-
-                                        var WR2x = ct.x - 20;
-                                        var WR2y = ct.y - 50;
-
-                                        var wr2 = this.game.add.sprite(WR2x, WR2y, 'wr2');
-                                                    wr2.scale.setTo(0.02);
-
-
+                     var LGx = ct.x;
+                     var LGy = ct.y - 20;
+                     var lg = this.game.add.sprite(LGx, LGy, 'lg');
+                            lg.scale.setTo(0.03);
+                     var spriteTextLG = game.add.text(LGx, LGy,'LG', {font: '9px Press Start 2P'});
 
 
-                                        var football = this.game.add.sprite(500, 220, 'football');
-                                                      football.scale.setTo(0.08);
+                     var LTx = ct.x;
+                     var LTy = lg.y - 20;
+                     var lt = this.game.add.sprite(LTx, LTy ,'lt');
+                                    lt.scale.setTo(0.03);
+                     var spriteTextLT = game.add.text(LTx, LTy,'LT', {font: '9px Press Start 2P'});
 
-                                        lineOfScrimmage = football.y;
-                                        console.log("los = " + lineOfScrimmage);
+//---------------------------=========== RECIEVERS ===================----------------------
+
+                     var WR1x = ct.x;
+                     var WR1y = ct.y - 150;
+                     var wr1 = this.game.add.sprite(WR1x, WR1y, 'wr1');
+                                    wr1.scale.setTo(0.02);
+                     var spriteTextWR1 = game.add.text(WR1x, WR1y,'WR1', {font: '9px Press Start 2P'});
+
+
+                     var WR2x = ct.x - 20;
+                     var WR2y = ct.y - 110;
+                     var wr2 = this.game.add.sprite(WR2x, WR2y, 'wr2');
+                                        wr2.scale.setTo(0.02);
+                     var spriteTextWR2= game.add.text(WR2x, WR2y,'WR2', {font: '9px Press Start 2P'});
+
+
+//---------------============== DEFENSIVE POSITIONS ============================--------------------
+                     var DT1x = ct.x + 40;
+                     var DT1y = ct.y + 10;
+                     var dt1= game.add.sprite(DT1x, DT1y, 'dt1');
+                             dt1.scale.setTo(0.061);
+                     var spriteTextDT1 = game.add.text(DT1x, DT1y, 'DT1', {font: '9px Press Start 2P'});
+
+
+
+                     var DT2x = ct.x + 40;
+                     var DT2y = ct.y - 10;
+                     var dt2= game.add.sprite(DT2x, DT2y, 'dt2');
+                             dt2.scale.setTo(0.061);
+                     var spriteTextDT12= game.add.text(DT2x, DT2y, 'DT2', {font: '9px Press Start 2P'});
+
+
+                     var DE1x = ct.x + 40;
+                     var DE1y = ct.y + 45;
+                     var de1= game.add.sprite(DE1x, DE1y, 'de1');
+                             de1.scale.setTo(0.061);
+                     var spriteTextDE1 = game.add.text(DE1x, DE1y,'DE1', {font: '9px Press Start 2P'});
+
+                     var DE2x = ct.x + 40;
+                     var DE2y = ct.y - 45;
+                     var de2= game.add.sprite(DE2x, DE2y, 'de2');
+                             de2.scale.setTo(0.061);
+                     var spriteTextDE2 = game.add.text(DE2x, DE2y,'DE2', {font: '9px Press Start 2P'});
+
+//------------------================== SECONDARY =============-----------------------------------
+
+                     var CB1x = ct.x + 40;
+                     var CB1y = ct.y - 175;
+                     var cb1= game.add.sprite(CB1x, CB1y, 'cb1');
+                             cb1.scale.setTo(0.42);
+                     var spriteTextCB1 = game.add.text(CB1x, CB1y, 'CB1', {font: '9px Press Start 2P'});
+                                spriteTextCB1.anchor.setTo(-1.5, -2.5);
+
+                     var CB2x = ct.x + 40;
+                     var CB2y = ct.y + 90;
+                     var cb2 = game.add.sprite(CB2x, CB2y, 'cb2');
+                              cb2.scale.setTo(0.42);
+                     var spriteTextCB2 = game.add.text(CB2x, CB2y, 'CB2', {font:  '9px Press Start 2p'});
+                              spriteTextCB2.anchor.setTo(-1.5, -2.5);
+
+                     var FSx = ct.x + 130;
+                     var FSy = ct.y - 70;
+                     var fs = game.add.sprite(FSx, FSy, 'fs');
+                              fs.scale.setTo(0.42);
+                     var spriteTextFS = game.add.text(FSx, FSy, 'FS', {font:  '9px Press Start 2p'});
+                              spriteTextFS.anchor.setTo(-3, -3);
+
+                     var SSx = ct.x + 80;
+                     var SSy = ct.y - 20;
+                     var ss = game.add.sprite(SSx, SSy, 'ss');
+                              ss.scale.setTo(0.42);
+                     var spriteTextSS = game.add.text(SSx, SSy, 'SS', {font:  '9px Press Start 2p'});
+                              spriteTextSS.anchor.setTo(-3, -3);
+
+//---------------====================== LINEBACKERS==========================-------------------------------
+
+
+                     var MLBx = ct.x + 70;
+                     var MLBy = ct.y - 30;
+                     var mlb = game.add.sprite(MLBx, MLBy, 'mlb');
+                               mlb.scale.setTo(0.06);
+                     var spriteTextMLB = game.add.text(MLBx, MLBy, 'MLB', {font:  '9px Press Start 2p'});
+                               spriteTextMLB.anchor.setTo(-0.3, -0.3);
+
+                     var SLBx = ct.x + 70;
+                     var SLBy = ct.y - 70;
+                     var slb = game.add.sprite(SLBx, SLBy, 'slb');
+                                        slb.scale.setTo(0.06);
+                     var spriteTextSLB = game.add.text(SLBx, SLBy, 'SLB', {font:  '9px Press Start 2p'});
+                                        spriteTextSLB.anchor.setTo(-0.3, -0.3);
+
+                    var WLBx = ct.x + 70;
+                    var WLBy = ct.y + 30;
+                    var wlb = game.add.sprite(WLBx, WLBy, 'wlb');
+                               wlb.scale.setTo(0.06);
+                    var spriteTextWLB = game.add.text(WLBx, WLBy, 'WLB', {font:  '9px Press Start 2p'});
+                               spriteTextWLB.anchor.setTo(-0.3, -0.3);
+
+
+
+
+
+                    var football = this.game.add.sprite(ct.x, ct.y, 'football');
+                                      football.scale.setTo(0.08);
+
+                    lineOfScrimmage = football.y;
+                    console.log("los = " + lineOfScrimmage);
 
 
 
@@ -303,7 +395,7 @@
                                       tweenF.start();
                                       tweenG.start();
                                       tweenH.start();
-                                      game.physics.arcade.enable( [ qb, wr1, wr2, wr3, wr4, ct, rg, rt, lg, lt, football] );
+                                      game.physics.arcade.enable( [ qb, wr1, wr2, wr3,  ct, rg, rt, lg, lt, cb1, cb2, de1, de2, dt1, dt2, ss, fs, mlb, slb, wlb, football] );
                                       qbPass();
 
 
@@ -338,10 +430,11 @@
 
 
 
-                    function passPlayRight(){
+              function passPlayRight(){
 
                       var ct = this.game.add.sprite(400, 220, 'ct');
                                 ct.scale.setTo(0.03);
+                      var spriteTextCT = game.add.text(CTx, CTy,'CT', {font: '9px Press Start 2P'});
 
                       var QBx = ct.x - 20;
                       var QBy = ct.y;
@@ -353,43 +446,47 @@
 
                       var rg = this.game.add.sprite(RGx, RGy, 'rg');
                                 rg.scale.setTo(0.03);
+                      var spriteTextRG = game.add.text(RGx, RGy,'RG', {font: '9px Press Start 2P'});
+
 
                       var RTx = ct.x;
                       var RTy = rg.y + 20;
-
                       var rt = this.game.add.sprite(RTx, RTy, 'rt');
                                 rt.scale.setTo(0.03);
+                      var spriteTextRT= game.add.text(RTx, RTy,'RT', {font: '9px Press Start 2P'});
 
                       var LGx = ct.x;
                       var LGy = ct.y - 20;
-
-
                       var lg = this.game.add.sprite(LGx, LGy, 'lg');
                                 lg.scale.setTo(0.03);
+                      var spriteTextLG = game.add.text(LGx, LGy,'LG', {font: '9px Press Start 2P'});
 
 
                       var LTx = ct.x;
                       var LTy = lg.y - 20;
-
                       var lt = this.game.add.sprite(LTx, LTy ,'lt');
                                 lt.scale.setTo(0.03);
+                      var spriteTextLT = game.add.text(LTx, LTy,'LT', {font: '9px Press Start 2P'});
 
 
                       var WR1x = ct.x;
                       var WR1y = rt.y + 100;
                       var wr1 = this.game.add.sprite(WR1x, WR1y, 'wr1');
                                 wr1.scale.setTo(0.02);
+                      var spriteTextWR1 = game.add.text(WR1x, WR1y,'WR1', {font: '9px Press Start 2P'});
 
 
                       var WR2x = ct.x -20;
                       var WR2y = ct.y + 50;
                       var wr2 = this.game.add.sprite(WR2x, WR2y, 'wr2');
                                 wr2.scale.setTo(0.02);
+                      var spriteTextWR2= game.add.text(WR2x, WR2y,'WR2', {font: '9px Press Start 2P'});
 
                       var WR3x = ct.x - 20;
                       var WR3y = rt.y + 50;
                       var wr3 = this.game.add.sprite(WR3x, WR3y, 'wr3');
                                  wr3.scale.setTo(0.02);
+                      var spriteTextWR3 = game.add.text(WR3x, WR3y,'WR3', {font: '9px Press Start 2P'});
 
 
 
@@ -427,32 +524,33 @@
                     tweenF.start();
                     tweenG.start();
                     tweenH.start();
+
                     qbPass();
 
-                    function qbPass() {
-                          var x = Math.floor((Math.random() * 3) + 1);
-                          console.log(x);
-                          switch (x){
+                        function qbPass() {
+                              var x = Math.floor((Math.random() * 3) + 1);
+                              console.log(x);
+                              switch (x){
 
-                            case 1:
+                                case 1:
 
-                                tweenFootballA.start();
-                                console.log('1');
-                                break;
+                                    tweenFootballA.start();
+                                    console.log('1');
+                                    break;
 
-                            case 2:
-                                tweenFootballB.start();
-                                console.log('2');
-                                break;
+                                case 2:
+                                    tweenFootballB.start();
+                                    console.log('2');
+                                    break;
 
-                            case 3:
-                                tweenFootballC.start();
-                                console.log('3');
-                                break;
+                                case 3:
+                                    tweenFootballC.start();
+                                    console.log('3');
+                                    break;
 
-                          }
+                              }
 
-                        }
+                            }
                       }
 
                       function passPlayMiddle(){
@@ -467,29 +565,48 @@
 
                         var RGx = ct.x;
                         var RGy = ct.y + 20;
-
                         var rg = this.game.add.sprite(RGx, RGy, 'rg');
                                   rg.scale.setTo(0.03);
+                        var spriteTextRG = game.add.text(RGx, RGy,'RG', {font: '9px Press Start 2P'});
+
 
                         var RTx = ct.x;
                         var RTy = rg.y + 20;
-
                         var rt = this.game.add.sprite(RTx, RTy, 'rt');
                                   rt.scale.setTo(0.03);
+                        var spriteTextRT = game.add.text(RTx, RTy,'RT', {font: '9px Press Start 2P'});
+
 
                         var LGx = ct.x;
                         var LGy = ct.y - 20;
-
-
                         var lg = this.game.add.sprite(LGx, LGy, 'lg');
                                   lg.scale.setTo(0.03);
+                        var spriteTextLG = game.add.text(LGx, LGy,'LG', {font: '9px Press Start 2P'});
 
 
                         var LTx = ct.x;
                         var LTy = lg.y - 20;
-
                         var lt = this.game.add.sprite(LTx, LTy ,'lt');
                                   lt.scale.setTo(0.03);
+                        var spriteTextLT = game.add.text(LTx, LTy,'LT', {font: '9px Press Start 2P'});
+
+
+                        var WR1x = ct.x;
+                        var WR1y = rt.y + 100;
+                        var wr1 = this.game.add.sprite(WR1x, WR1y, 'wr1');
+                                            wr1.scale.setTo(0.02);
+                        var spriteTextWR1 = game.add.text(WR1x, WR1y,'WR1', {font: '9px Press Start 2P'});
+
+                        var WR2x = ct.x -20;
+                        var WR2y = ct.y + 50;
+                        var wr2 = this.game.add.sprite(WR2x, WR2y, 'wr2');
+                                    wr2.scale.setTo(0.02);
+                        var spriteTextWR2 = game.add.text(WR2x, WR2y,'WR2', {font: '9px Press Start 2P'});
+
+                        // var WR3x = ct.x - 20;
+                        // var WR3y = rt.y + 50;
+                        // var wr3 = this.game.add.sprite(WR3x, WR3y, 'wr3');
+                        //                   wr3.scale.setTo(0.02);
 
 
                       var tweenA = game.add.tween(wr1).to({x: '+100'}, 2000);
