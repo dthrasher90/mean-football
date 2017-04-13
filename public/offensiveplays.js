@@ -2,7 +2,7 @@ function hithere(){
   console.log("hello from offensive plays!");
 }
 
-function qbPass() {
+function qbPass(tweenFootballA, tweenFootballB, tweenFootballC) {
 
 
     var x = Math.floor((Math.random() * 3) + 1);
@@ -12,16 +12,25 @@ function qbPass() {
         case 1:
 
             tweenFootballA.start();
+            tweenFootballA.onComplete(los, this); function los(){
+              console.log("line of scrimmage = ", lineOfScrimmage);
+            }
             console.log('1');
             break;
 
         case 2:
             tweenFootballB.start();
+            tweenFootballB.onComplete(los, this); function los(){
+              console.log("line of scrimmage = ", lineOfScrimmage);
+            }
             console.log('2');
             break;
 
         case 3:
             tweenFootballC.start();
+            tweenFootballC.onComplete(los, this); function los(){
+              console.log("line of scrimmage = ", lineOfScrimmage);
+            }
             console.log('3');
             break;
 
@@ -105,10 +114,10 @@ function passPlayLeft() {
 
 
     var football = this.game.add.sprite(ct.x, ct.y, 'football');
-    football.scale.setTo(0.08);
+          football.scale.setTo(0.08);
 
-    lineOfScrimmage = football.y;
-    console.log("los = " + lineOfScrimmage);
+    // lineOfScrimmage = football.y;
+    // console.log("los = " + lineOfScrimmage);
 
 
 
@@ -140,18 +149,9 @@ function passPlayLeft() {
         x: '-50'
     }, 1800);
 
-    var tweenFootballA = game.add.tween(football).to({
-        x: '+100',
-        y: '-150'
-    }, 3000);
-    var tweenFootballB = game.add.tween(football).to({
-        x: '+100',
-        y: '-150'
-    }, 3000);
-    var tweenFootballC = game.add.tween(football).to({
-        x: '+100',
-        y: '-150'
-    }, 3000);
+
+
+
 
     tweenA.start();
     tweenB.start();
@@ -166,6 +166,62 @@ function passPlayLeft() {
     Base43Defense(passPlayLeft, ct);
     game.physics.arcade.enable([qb, wr1, wr2, wr3, ct, rg, rt, lg, lt]);
     qbPass();
+    function qbPass() {
+
+        ;
+        var x = Math.floor((Math.random() * 3) + 1);
+        console.log(x);
+        switch (x) {
+
+            case 1:
+
+            var tweenFootballA = game.add.tween(football).to({
+                x: '+100',
+                y: '-150'
+            }, 3000);
+                tweenFootballA.start();
+                tweenFootballA.onComplete.add(los, this);
+                function los(){
+                  var lineOfScrimmage = football.y;
+                  console.log("line of scrimmage = ", lineOfScrimmage);
+                }
+                console.log('1');
+                break;
+
+            case 2:
+
+
+            var tweenFootballB = game.add.tween(football).to({
+                x: '+100',
+                y: '-50'
+            }, 3000);
+                tweenFootballB.start();
+                tweenFootballB.onComplete.add(los, this);
+                function los(){
+                  var lineOfScrimmage = football.y;
+                  console.log("line of scrimmage = ", lineOfScrimmage);
+                }
+                console.log('2');
+                break;
+
+            case 3:
+
+            var tweenFootballC = game.add.tween(football).to({
+                x: '+100',
+                y: '-100'
+            }, 3000);
+                tweenFootballC.start();
+                tweenFootballC.onComplete.add(los, this);
+                function los(){
+
+                  var lineOfScrimmage = football.y;
+                  console.log("line of scrimmage = ", lineOfScrimmage);
+                }
+                console.log('3');
+                break;
+
+        }
+    }
 
 
 
@@ -173,7 +229,7 @@ function passPlayLeft() {
 
 }
 
-function passPlayRight() {
+function passPlayRight(lineOfScrimmage) {
 
 
 
@@ -245,13 +301,12 @@ function passPlayRight() {
     var spriteTextWR3 = game.add.text(WR3x, WR3y, 'WR3', {
         font: '9px Press Start 2P'
     });
+
+
     var football = this.game.add.sprite(ct.x, ct.y, 'football');
     football.scale.setTo(0.08);
 
-
-
-    game.physics.arcade.enable([qb, wr1, wr2, wr3, ct, rg, rt, lg, lt]);
-
+    game.physics.arcade.enable([qb, wr1, wr2, wr3, ct, rg, rt, lg, lt, football]);
 
 
 
@@ -259,6 +314,7 @@ function passPlayRight() {
     var tweenA = game.add.tween(wr1).to({
         x: '+200'
     }, 3000);
+
 
 
     var tweenB = game.add.tween(wr2).to({
@@ -293,19 +349,6 @@ function passPlayRight() {
         x: '-50'
     }, 1800);
 
-    var tweenFootballA = game.add.tween(football).to({
-        x: '+35',
-        y: '+50'
-    }, 3000);
-    var tweenFootballB = game.add.tween(football).to({
-        x: '+100',
-        y: '+50'
-    }, 3000);
-    var tweenFootballC = game.add.tween(football).to({
-        x: '+200'
-    }, 3000);
-
-
 
     tweenA.start();
     tweenB.start();
@@ -316,9 +359,71 @@ function passPlayRight() {
     tweenG.start();
     tweenH.start();
 
-    Base43Defense(ct);
+
+    Base43Defense(passPlayLeft, ct);
     qbPass();
+
+    function qbPass() {
+        var lineOfScrimmage = football.y;
+        console.log("original line of scrimmage=  "+ lineOfScrimmage);
+        var x = Math.floor((Math.random() * 3) + 1);
+        console.log(x);
+        switch (x) {
+
+            case 1:
+
+            var tweenFootballA = game.add.tween(football).to({
+                x: '+100',
+                y: '+150'
+            }, 3000);
+                tweenFootballA.start();
+                tweenFootballA.onComplete.add(los, this);
+                function los(){
+                  var lineOfScrimmage = football.y;
+                  console.log("line of scrimmage = ", lineOfScrimmage);
+                }
+                console.log('1');
+                break;
+
+            case 2:
+
+
+            var tweenFootballB = game.add.tween(football).to({
+                x: '+100',
+                y: '+200'
+            }, 3000);
+                tweenFootballB.start();
+                tweenFootballB.onComplete.add(los, this);
+                function los(){
+                  var lineOfScrimmage = football.y;
+                  console.log("line of scrimmage = ", lineOfScrimmage);
+                }
+                console.log('2');
+                break;
+
+            case 3:
+
+            var tweenFootballC = game.add.tween(football).to({
+                x: '+100',
+                y: '+300'
+            }, 3000);
+                tweenFootballC.start();
+                tweenFootballC.onComplete.add(los, this);
+                function los(){
+                  var lineOfScrimmage = football.y;
+                  console.log("line of scrimmage = ", lineOfScrimmage);
+                }
+                console.log('3');
+                break;
+
+        }
+    }
+
 }
+
+// ============================
+//==============================
+//===========================
 
  function passPlayMiddle(){
       var ct = this.game.add.sprite(400, 220, 'ct');
@@ -388,6 +493,12 @@ function passPlayRight() {
                 font: '9px Press Start 2P'
                });
 
+      var football = this.game.add.sprite(ct.x, ct.y, 'football');
+               football.scale.setTo(0.08);
+
+    //  game.physics.arcade.enable([qb, wr1, wr2, wr3, ct, rg, rt, lg, lt, ct, football]);
+
+
             var tweenA = game.add.tween(wr1).to({
                 x: '+100'
             }, 2000);
@@ -408,24 +519,71 @@ function passPlayRight() {
             }, 2000);
             tweenC.chain(tweenC2);
 
-            var tweenFootballA = game.add.tween(football).to({
-                x: '+35',
-                y: '+50'
-            }, 3000);
 
-            var tweenFootballB = game.add.tween(football).to({
-                x: '+100',
-                y: '+50'
-            }, 3000);
-
-            var tweenFootballC = game.add.tween(football).to({
-                x: '+200'
-            }, 3000);
 
 
 tweenA.start();
 tweenB.start();
 tweenC.start();
-
 qbPass();
+function qbPass() {
+
+
+    var x = Math.floor((Math.random() * 3) + 1);
+    console.log(x);
+
+
+    console.log('original line == ', lineOfScrimmage);
+    switch (x) {
+
+        case 1:
+        var tweenFootballA = game.add.tween(football).to({
+            x: '+100',
+            y: '+150'
+        }, 3000);
+            tweenFootballA.start();
+            tweenFootballA.onComplete.add(los, this);
+            function los(){
+              var lineOfScrimmage = football.y;
+              console.log("line of scrimmage = ", lineOfScrimmage);
+            }
+            console.log('1');;
+            break;
+
+        case 2:
+
+        var tweenFootballB = game.add.tween(football).to({
+            x: '+100',
+            y: '+250'
+        }, 3000);
+            tweenFootballB.start();
+            tweenFootballB.onComplete.add(los, this);
+
+            function los(){
+              var lineOfScrimmage = football.y;
+              console.log("line of scrimmage = ", lineOfScrimmage);
+            }
+            
+            console.log('2');
+
+        case 3:
+
+        var tweenFootballC = game.add.tween(football).to({
+            x: '+100',
+            y: '+350'
+        }, 3000);
+            tweenFootballC.start();
+            tweenFootballC.onComplete.add(los, this);
+
+            function los(){
+              var lineOfScrimmage = football.y;
+              console.log("line of scrimmage = ", lineOfScrimmage);
+            }
+
+            console.log('3');
+            break;
+
+    }
+}
+
 }

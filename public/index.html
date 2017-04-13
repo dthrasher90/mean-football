@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>MEAN FOOTBALL</title>
 
-    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
+    <!-- <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P" ></script>
     <script src="phaser.js">  </script>
     <script src="offensiveplays.js"></script>
@@ -75,20 +75,22 @@
                     var scoreTextHome, scoreTextAway, Time, GameLog, DownLog;
                     var homeScore= 0;
                     var awayScore =0;
+
                       scoreTextHome = this.add.text(0.1, 0, 'Home: '+ homeScore, {font: '20px Press Start 2P',fill: '#ffffff' });
                       scoreTextAway = game.add.text(0.1, 21, 'Away: ' + awayScore, {font: '20px Press Start 2P', fill: '#ffffff' });
                       Time = this.game.add.text(310, 0, 'Time: 00:00', {font: '20px Press Start 2P', fill: '#ffffff' });
                       DownLog = game.add.text(650, 0, '1 & 10 ',{font: '20px Press Start 2p', fill: '#ffffff' });
 
                       GameLog= this.add.text(0, 400, 'Test Defense',{font: '20px Press Start 2P', fill: '#cccc00' });
-                      GameLog.inputEnabled = true;
-                      GameLog.events.onInputDown.add(switchStateTo, this);
+                      // GameLog.inputEnabled = true;
+                      // GameLog.events.onInputDown.add(switchStateTo, this);
 
                       breakHuddle = game.add.text(820, 400, "BREAK!!", {font: '24px Press Start 2p', fill: '#ffffff'});
                       breakHuddle.inputEnabled = true;
                       breakHuddle.events.onInputDown.add(switchStateToGameAction, this);
 
-                    var lineOfScrimmage = ct.x
+                    // var lineOfScrimmage = football.y;
+
                                 function switchStateToGameAction(){
                                   game.state.add('GameActionState', GameActionState);
                                   game.state.start('GameActionState');
@@ -107,10 +109,11 @@
                     update: function(){
 
 
+
                     }
 
 //-------------************ End Huddle State*********************-------------
-                  };
+};
 
 
 
@@ -229,7 +232,6 @@
 
 
 
-
 //end of create brackets -------------
   },
 
@@ -238,10 +240,9 @@
 
 
 
-                update: function(){
+                update: function(passPlayLeft, passPlayRight, passPlayMiddle){
 
-
-
+            
                 },
               };
 
