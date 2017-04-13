@@ -7,7 +7,9 @@
     <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P" ></script>
     <script src="phaser.js">  </script>
-    <script type="../playbook/defense/defensiveplays.js"></script>
+    <script src="DefenseState.js"> </script>
+    <script src= "defensiveplays.js"></script>
+    <script src="offensiveplays.js"></script>
     <link rel="stylesheet" href="main.css">
   </head>
   <body ng-app>
@@ -35,11 +37,14 @@
 
             var game = new Phaser.Game(1000, 600, Phaser.AUTO);
                 game.state.add('GameActionState', GameActionState);
+                defense();
+                hi();
+                hithere();
 
 
 ///////======================HUDDLE STATE+++++++++++++++++++++++++++++++++++
 
-                var HuddleState  = {
+          var HuddleState  = {
                    preload: function(){
                       game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
 
@@ -71,10 +76,12 @@
                       scoreTextAway = game.add.text(0.1, 21, 'Away: ' + awayScore, {font: '20px Press Start 2P', fill: '#ffffff' });
                       Time = this.game.add.text(310, 0, 'Time: 00:00', {font: '20px Press Start 2P', fill: '#ffffff' });
                       DownLog = game.add.text(650, 0, '1 & 10 ',{font: '20px Press Start 2p', fill: '#ffffff' });
-                      GameLog= game.add.text(0, 400, 'Game Log',{font: '20px Press Start 2P', fill: '#cccc00' });
 
+                      GameLog= this.add.text(0, 400, 'Test Defense',{font: '20px Press Start 2P', fill: '#cccc00' });
+                      GameLog.inputEnabled = true;
+                      GameLog.events.onInputDown.add(switchStateTo, this);
 
-                      breakHuddle = this.add.text(820, 400, "BREAK!", {font: '24px Press Start 2p', fill: '#ffffff'});
+                      breakHuddle = game.add.text(820, 400, "BREAK!!", {font: '24px Press Start 2p', fill: '#ffffff'});
                       breakHuddle.inputEnabled = true;
                       breakHuddle.events.onInputDown.add(switchStateToGameAction, this);
 
@@ -82,6 +89,8 @@
                                   game.state.add('GameActionState', GameActionState);
                                   game.state.start('GameActionState');
                                 }
+
+
 //create function bracket --- do not erase
   },
 
@@ -95,6 +104,8 @@
 
 
                     }
+
+//-------------************ End Huddle State*********************-------------
                   };
 
 
@@ -219,98 +230,13 @@
                 var ct = this.game.add.sprite(100, 220, 'ct');
                          ct.scale.setTo(0.03);
 
-// =====================================4-3 Base Defense==================================================================
-                function Base43Defense(){
-                  var DT1x = ct.x + 40;
-                  var DT1y = ct.y + 10;
-                  var dt1= game.add.sprite(DT1x, DT1y, 'dt1');
-                          dt1.scale.setTo(0.061);
-                  var spriteTextDT1 = game.add.text(DT1x, DT1y, 'DT1', {font: '9px Press Start 2P'});
 
-
-
-                  var DT2x = ct.x + 40;
-                  var DT2y = ct.y - 10;
-                  var dt2= game.add.sprite(DT2x, DT2y, 'dt2');
-                          dt2.scale.setTo(0.061);
-                  var spriteTextDT2= game.add.text(DT2x, DT2y, 'DT2', {font: '9px Press Start 2P'});
-
-
-                  var DE1x = ct.x + 40;
-                  var DE1y = ct.y + 45;
-                  var de1= game.add.sprite(DE1x, DE1y, 'de1');
-                          de1.scale.setTo(0.061);
-                  var spriteTextDE1 = game.add.text(DE1x, DE1y,'DE1', {font: '9px Press Start 2P'});
-
-                  var DE2x = ct.x + 40;
-                  var DE2y = ct.y - 45;
-                  var de2= game.add.sprite(DE2x, DE2y, 'de2');
-                          de2.scale.setTo(0.061);
-                  var spriteTextDE2 = game.add.text(DE2x, DE2y,'DE2', {font: '9px Press Start 2P'});
-
-//------------------================== SECONDARY =============-----------------------------------
-
-                  var CB1x = ct.x + 40;
-                  var CB1y = ct.y - 175;
-                  var cb1= game.add.sprite(CB1x, CB1y, 'cb1');
-                          cb1.scale.setTo(0.42);
-                  var spriteTextCB1 = game.add.text(CB1x, CB1y, 'CB1', {font: '9px Press Start 2P'});
-                             spriteTextCB1.anchor.setTo(-1.5, -2.5);
-
-                  var CB2x = ct.x + 40;
-                  var CB2y = ct.y + 90;
-                  var cb2 = game.add.sprite(CB2x, CB2y, 'cb2');
-                           cb2.scale.setTo(0.42);
-                  var spriteTextCB2 = game.add.text(CB2x, CB2y, 'CB2', {font:  '9px Press Start 2p'});
-                           spriteTextCB2.anchor.setTo(-1.5, -2.5);
-
-                  var FSx = ct.x + 130;
-                  var FSy = ct.y - 70;
-                  var fs = game.add.sprite(FSx, FSy, 'fs');
-                           fs.scale.setTo(0.42);
-                  var spriteTextFS = game.add.text(FSx, FSy, 'FS', {font:  '9px Press Start 2p'});
-                           spriteTextFS.anchor.setTo(-3, -3);
-
-                  var SSx = ct.x + 80;
-                  var SSy = ct.y - 20;
-                  var ss = game.add.sprite(SSx, SSy, 'ss');
-                           ss.scale.setTo(0.42);
-                  var spriteTextSS = game.add.text(SSx, SSy, 'SS', {font:  '9px Press Start 2p'});
-                           spriteTextSS.anchor.setTo(-3, -3);
-
-//---------------====================== LINEBACKERS==========================-------------------------------
-
-
-                  var MLBx = ct.x + 70;
-                  var MLBy = ct.y - 30;
-                  var mlb = game.add.sprite(MLBx, MLBy, 'mlb');
-                            mlb.scale.setTo(0.06);
-                  var spriteTextMLB = game.add.text(MLBx, MLBy, 'MLB', {font:  '9px Press Start 2p'});
-                            spriteTextMLB.anchor.setTo(-0.3, -0.3);
-
-                  var SLBx = ct.x + 70;
-                  var SLBy = ct.y - 70;
-                  var slb = game.add.sprite(SLBx, SLBy, 'slb');
-                                     slb.scale.setTo(0.06);
-                  var spriteTextSLB = game.add.text(SLBx, SLBy, 'SLB', {font:  '9px Press Start 2p'});
-                                     spriteTextSLB.anchor.setTo(-0.3, -0.3);
-
-                 var WLBx = ct.x + 70;
-                 var WLBy = ct.y + 30;
-                 var wlb = game.add.sprite(WLBx, WLBy, 'wlb');
-                            wlb.scale.setTo(0.06);
-                 var spriteTextWLB = game.add.text(WLBx, WLBy, 'WLB', {font:  '9px Press Start 2p'});
-                            spriteTextWLB.anchor.setTo(-0.3, -0.3);
-
-
-
-                }
 
                 function passPlayLeft(){
 
 
-                     var ct = this.game.add.sprite(100, 220, 'ct');
-                              ct.scale.setTo(0.03);
+                              var ct = this.game.add.sprite(100, 220, 'ct');
+                                        ct.scale.setTo(0.03);
                               var QBx = ct.x - 20;
                               var QBy = ct.y;
                               var qb = this.game.add.sprite(QBx, QBy, 'qb');
@@ -367,91 +293,6 @@
 
 
 
-//---------------============== DEFENSIVE POSITIONS ============================--------------------
-                     var DT1x = ct.x + 40;
-                     var DT1y = ct.y + 10;
-                     var dt1= game.add.sprite(DT1x, DT1y, 'dt1');
-                             dt1.scale.setTo(0.061);
-                     var spriteTextDT1 = game.add.text(DT1x, DT1y, 'DT1', {font: '9px Press Start 2P'});
-
-
-
-                     var DT2x = ct.x + 40;
-                     var DT2y = ct.y - 10;
-                     var dt2= game.add.sprite(DT2x, DT2y, 'dt2');
-                             dt2.scale.setTo(0.061);
-                     var spriteTextDT2= game.add.text(DT2x, DT2y, 'DT2', {font: '9px Press Start 2P'});
-
-
-                     var DE1x = ct.x + 40;
-                     var DE1y = ct.y + 45;
-                     var de1= game.add.sprite(DE1x, DE1y, 'de1');
-                             de1.scale.setTo(0.061);
-                     var spriteTextDE1 = game.add.text(DE1x, DE1y,'DE1', {font: '9px Press Start 2P'});
-
-                     var DE2x = ct.x + 40;
-                     var DE2y = ct.y - 45;
-                     var de2= game.add.sprite(DE2x, DE2y, 'de2');
-                             de2.scale.setTo(0.061);
-                     var spriteTextDE2 = game.add.text(DE2x, DE2y,'DE2', {font: '9px Press Start 2P'});
-
-//------------------================== SECONDARY =============-----------------------------------
-
-                     var CB1x = ct.x + 40;
-                     var CB1y = ct.y - 175;
-                     var cb1= game.add.sprite(CB1x, CB1y, 'cb1');
-                             cb1.scale.setTo(0.42);
-                     var spriteTextCB1 = game.add.text(CB1x, CB1y, 'CB1', {font: '9px Press Start 2P'});
-                                spriteTextCB1.anchor.setTo(-1.5, -2.5);
-
-                     var CB2x = ct.x + 40;
-                     var CB2y = ct.y + 90;
-                     var cb2 = game.add.sprite(CB2x, CB2y, 'cb2');
-                              cb2.scale.setTo(0.42);
-                     var spriteTextCB2 = game.add.text(CB2x, CB2y, 'CB2', {font:  '9px Press Start 2p'});
-                              spriteTextCB2.anchor.setTo(-1.5, -2.5);
-
-                     var FSx = ct.x + 130;
-                     var FSy = ct.y - 70;
-                     var fs = game.add.sprite(FSx, FSy, 'fs');
-                              fs.scale.setTo(0.42);
-                     var spriteTextFS = game.add.text(FSx, FSy, 'FS', {font:  '9px Press Start 2p'});
-                              spriteTextFS.anchor.setTo(-3, -3);
-
-                     var SSx = ct.x + 80;
-                     var SSy = ct.y - 20;
-                     var ss = game.add.sprite(SSx, SSy, 'ss');
-                              ss.scale.setTo(0.42);
-                     var spriteTextSS = game.add.text(SSx, SSy, 'SS', {font:  '9px Press Start 2p'});
-                              spriteTextSS.anchor.setTo(-3, -3);
-
-//---------------====================== LINEBACKERS==========================-------------------------------
-
-
-                     var MLBx = ct.x + 70;
-                     var MLBy = ct.y - 30;
-                     var mlb = game.add.sprite(MLBx, MLBy, 'mlb');
-                               mlb.scale.setTo(0.06);
-                     var spriteTextMLB = game.add.text(MLBx, MLBy, 'MLB', {font:  '9px Press Start 2p'});
-                               spriteTextMLB.anchor.setTo(-0.3, -0.3);
-
-                     var SLBx = ct.x + 70;
-                     var SLBy = ct.y - 70;
-                     var slb = game.add.sprite(SLBx, SLBy, 'slb');
-                                        slb.scale.setTo(0.06);
-                     var spriteTextSLB = game.add.text(SLBx, SLBy, 'SLB', {font:  '9px Press Start 2p'});
-                                        spriteTextSLB.anchor.setTo(-0.3, -0.3);
-
-                    var WLBx = ct.x + 70;
-                    var WLBy = ct.y + 30;
-                    var wlb = game.add.sprite(WLBx, WLBy, 'wlb');
-                               wlb.scale.setTo(0.06);
-                    var spriteTextWLB = game.add.text(WLBx, WLBy, 'WLB', {font:  '9px Press Start 2p'});
-                               spriteTextWLB.anchor.setTo(-0.3, -0.3);
-
-
-
-                               game.physics.arcade.enable( [ qb, wr1, wr2, wr3, ct, rg, rt, lg, lt, cb1, cb2, de1, de2, dt1, dt2, ss, fs, mlb, slb, wlb] );
 
                     var football = this.game.add.sprite(ct.x, ct.y, 'football');
                                       football.scale.setTo(0.08);
@@ -486,7 +327,9 @@
                                       tweenF.start();
                                       tweenG.start();
                                       tweenH.start();
-                                      game.physics.arcade.enable( [ qb, wr1, wr2, wr3, ct, rg, rt, lg, lt, cb1, cb2, de1, de2, dt1, dt2, ss, fs, mlb, slb, wlb] );
+
+                                      Base43Defense(passPlayLeft, ct);
+                                      game.physics.arcade.enable( [ qb, wr1, wr2, wr3, ct, rg, rt, lg, lt] );
                                       qbPass();
 
 
@@ -664,6 +507,8 @@
 
                      var football = this.game.add.sprite(ct.x, ct.y, 'football');
                                         football.scale.setTo(0.08);
+
+
 
                     game.physics.arcade.enable( [ qb, wr1, wr2, wr3, ct, rg, rt, lg, lt, cb1, cb2, de1, de2, dt1, dt2, ss, fs, mlb, slb, wlb] );
 
