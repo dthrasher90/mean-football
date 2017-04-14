@@ -7,9 +7,9 @@
     <!-- <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P" ></script>
     <script src="phaser.js">  </script>
-    <script src="offensiveplays.js"></script>
-    <script src= "defensiveplays.js"></script>
-    <script src="DefenseState.js"> </script>
+    <script src="src/playbook/offense/offensiveplays.js"></script>
+    <script src= "src/playbook/defense/defensiveplays.js"></script>
+
 
 
     <!-- <script src="offensiveplays.js"></script> -->
@@ -37,12 +37,17 @@
             var scoreTextHome, scoreTextAway, Time, GameLog, DownLog;
             var lineOfScrimmage;
 
-
             var game = new Phaser.Game(1000, 600, Phaser.AUTO);
                 game.state.add('GameActionState', GameActionState);
-                defense();
+
                 hi();
                 hithere();
+
+
+
+
+
+
 
 
 ///////======================HUDDLE STATE+++++++++++++++++++++++++++++++++++
@@ -51,22 +56,24 @@
                    preload: function(){
                       game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
 
-                      game.load.image('field', 'public/assets/imagesfootballfield.jpg');
-                      game.load.image('wr1', 'public/assets/imagesreddot.png');
-                      game.load.image('wr2', 'public/assets/reddot.png');
-                      game.load.image('wr3', 'public/assets/reddot.png');
-                      game.load.image('wr4', 'public/assets/reddot.png');
-                      game.load.image('qb', 'public/assets/reddot.png');
-                      game.load.image('lt', 'public/assets/reddot.png');
-                      game.load.image('lg', 'public/assets/reddot.png');
-                      game.load.image('ct', 'public/assets/reddot.png');
-                      game.load.image('rg', 'public/assets/reddot.png');
-                      game.load.image('rt', 'public/assets/reddot.png');
-                      game.load.image('football','public/assets/football.png');
+                      game.load.image('field', 'footballfield.jpg');
+                      game.load.image('wr1', 'reddot.png');
+                      game.load.image('wr2', 'reddot.png');
+                      game.load.image('wr3', 'reddot.png');
+                      game.load.image('wr4', 'reddot.png');
+                      game.load.image('qb', 'reddot.png');
+                      game.load.image('lt', 'reddot.png');
+                      game.load.image('lg', 'reddot.png');
+                      game.load.image('ct', 'reddot.png');
+                      game.load.image('rg', 'reddot.png');
+                      game.load.image('rt', 'reddot.png');
+                      game.load.image('football','football.png');
 
                     },
 
                     create:  function(){
+
+                      console.log("this = ", this);
 
                         var field = this.game.add.button(15, 50, 'field');
                             field.scale.setTo(1.1);
@@ -91,6 +98,8 @@
 
                     // var lineOfScrimmage = football.y;
 
+
+
                                 function switchStateToGameAction(){
                                   game.state.add('GameActionState', GameActionState);
                                   game.state.start('GameActionState');
@@ -99,11 +108,6 @@
 
 //create function bracket --- do not erase
   },
-
-
-
-
-
 
 
                     update: function(){
@@ -150,7 +154,6 @@
 
 
                   game.load.image('football','football.png');
-                  // game.load.image('button', 'public/assets/button.jpg');
 
 
                 },
@@ -162,11 +165,11 @@
 
                       game.physics.startSystem(Phaser.Physics.ARCADE);
 
-                    // var lineOfScrimmage2 = ct.y;
-                    // console.log("los 2 = " + lineOfScrimmage2);
 
 
-
+                      var field = game.add.sprite(15, 50, 'field');
+                          field.scale.setTo(1.1);
+                          field.anchor.setTo(0);
 
 
                 var homeScore= 0;
@@ -179,7 +182,7 @@
                     Time = this.game.add.text(310, 0, 'Time: 00:00', {font: '20px Press Start 2P', fill: '#ffffff' });
 
                     DownLog = game.add.text(650, 0, '1 & 10 ',{font: '20px Press Start 2p', fill: '#ffffff' });
-                //    GameLog= game.add.text(0, 400, 'Game Log',{font: '20px Press Start 2P', fill: '#cccc00' });
+                            GameLog= game.add.text(0, 400, 'Game Log',{font: '20px Press Start 2P', fill: '#cccc00' });
 
 
 
@@ -219,13 +222,11 @@
 
 
 
-
+                console.log("global variable attempt = ", lineOfScrimmage );
 
 //================Images Loaded======================================================================
 
-                var field = game.add.sprite(15, 50, 'field');
-                    field.scale.setTo(1.1);
-                    field.anchor.setTo(0);
+
 
 
 
@@ -242,7 +243,6 @@
 
                 update: function(passPlayLeft, passPlayRight, passPlayMiddle){
 
-            
                 },
               };
 
