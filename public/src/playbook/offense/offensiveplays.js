@@ -41,7 +41,7 @@ var lineOfScrimmage;
 
 
 var lineOfScrimmage;
-// function passPlayLeft(lineOfScrimmage) {
+function passPlayLeft(lineOfScrimmage) {
 
 
     var ct = this.game.add.sprite(100, 220, 'ct');
