@@ -2,40 +2,40 @@ function hithere(){
   console.log("hello from offensive plays!");
 }
 
-function qbPass(tweenFootballA, tweenFootballB, tweenFootballC) {
-
-
-    var x = Math.floor((Math.random() * 3) + 1);
-    console.log(x);
-    switch (x) {
-
-        case 1:
-
-            tweenFootballA.start();
-            tweenFootballA.onComplete(los, this); function los(){
-              console.log("line of scrimmage = ", lineOfScrimmage);
-            }
-            console.log('1');
-            break;
-
-        case 2:
-            tweenFootballB.start();
-            tweenFootballB.onComplete(los, this); function los(){
-              console.log("line of scrimmage = ", lineOfScrimmage);
-            }
-            console.log('2');
-            break;
-
-        case 3:
-            tweenFootballC.start();
-            tweenFootballC.onComplete(los, this); function los(){
-              console.log("line of scrimmage = ", lineOfScrimmage);
-            }
-            console.log('3');
-            break;
-
-    }
-}
+// function qbPass(tweenFootballA, tweenFootballB, tweenFootballC) {
+//
+//
+//     var x = Math.floor((Math.random() * 3) + 1);
+//     console.log(x);
+//     switch (x) {
+//
+//         case 1:
+//
+//             tweenFootballA.start();
+//             tweenFootballA.onComplete(los, this); function los(){
+//               console.log("line of scrimmage = ", lineOfScrimmage);
+//             }
+//             console.log('1');
+//             break;
+//
+//         case 2:
+//             tweenFootballB.start();
+//             tweenFootballB.onComplete(los, this); function los(){
+//               console.log("line of scrimmage = ", lineOfScrimmage);
+//             }
+//             console.log('2');
+//             break;
+//
+//         case 3:
+//             tweenFootballC.start();
+//             tweenFootballC.onComplete(los, this); function los(){
+//               console.log("line of scrimmage = ", lineOfScrimmage);
+//             }
+//             console.log('3');
+//             break;
+//
+//     }
+// }
 
 function passPlayLeft() {
 
@@ -168,7 +168,7 @@ function passPlayLeft() {
     qbPass();
     function qbPass() {
 
-        ;
+
         var x = Math.floor((Math.random() * 3) + 1);
         console.log(x);
         switch (x) {
@@ -182,7 +182,7 @@ function passPlayLeft() {
                 tweenFootballA.start();
                 tweenFootballA.onComplete.add(los, this);
                 function los(){
-                  var lineOfScrimmage = football.y;
+                  lineOfScrimmage = football.y;
                   console.log("line of scrimmage = ", lineOfScrimmage);
                 }
                 console.log('1');
@@ -198,7 +198,7 @@ function passPlayLeft() {
                 tweenFootballB.start();
                 tweenFootballB.onComplete.add(los, this);
                 function los(){
-                  var lineOfScrimmage = football.y;
+                   lineOfScrimmage = football.y;
                   console.log("line of scrimmage = ", lineOfScrimmage);
                 }
                 console.log('2');
@@ -214,7 +214,7 @@ function passPlayLeft() {
                 tweenFootballC.onComplete.add(los, this);
                 function los(){
 
-                  var lineOfScrimmage = football.y;
+                   lineOfScrimmage = football.y;
                   console.log("line of scrimmage = ", lineOfScrimmage);
                 }
                 console.log('3');
@@ -222,9 +222,6 @@ function passPlayLeft() {
 
         }
     }
-
-
-
 
 
 }
@@ -563,7 +560,7 @@ function qbPass() {
               var lineOfScrimmage = football.y;
               console.log("line of scrimmage = ", lineOfScrimmage);
             }
-            
+
             console.log('2');
 
         case 3:

@@ -2,6 +2,8 @@ function hithere(){
   console.log("hello from offensive plays!");
 }
 
+var lineOfScrimmage;
+
 // function qbPass(tweenFootballA, tweenFootballB, tweenFootballC) {
 //
 //
@@ -37,7 +39,9 @@ function hithere(){
 //     }
 // }
 
-function passPlayLeft() {
+
+var lineOfScrimmage;
+// function passPlayLeft(lineOfScrimmage) {
 
 
     var ct = this.game.add.sprite(100, 220, 'ct');
@@ -116,11 +120,6 @@ function passPlayLeft() {
     var football = this.game.add.sprite(ct.x, ct.y, 'football');
           football.scale.setTo(0.08);
 
-    // lineOfScrimmage = football.y;
-    // console.log("los = " + lineOfScrimmage);
-
-
-
     var tweenA = game.add.tween(wr1).to({
         x: '+200'
     }, 1700);
@@ -149,14 +148,9 @@ function passPlayLeft() {
         x: '-50'
     }, 1800);
 
-
-
-
-
     tweenA.start();
     tweenB.start();
-    // tweenC.start();
-
+    tweenC.start();
     tweenD.start();
     tweenE.start();
     tweenF.start();
@@ -166,10 +160,12 @@ function passPlayLeft() {
     Base43Defense(passPlayLeft, ct);
     game.physics.arcade.enable([qb, wr1, wr2, wr3, ct, rg, rt, lg, lt]);
     qbPass();
-    function qbPass() {
+    function qbPass(lineOfScrimmage) {
 
-        ;
-        var x = Math.floor((Math.random() * 3) + 1);
+
+        var x = 1;
+
+        // Math.floor((Math.random() * 3) + 1);
         console.log(x);
         switch (x) {
 
@@ -180,12 +176,15 @@ function passPlayLeft() {
                 y: '-150'
             }, 3000);
                 tweenFootballA.start();
-                tweenFootballA.onComplete.add(los, this);
-                function los(){
-                  lineOfScrimmage = football.y;
-                  console.log("line of scrimmage = ", lineOfScrimmage);
-                }
+                tweenFootballA.onComplete.add(function newlocation (lineOfScrimmage){
+                    lineOfScrimmage = football.y;
+                    console.log(lineOfScrimmage);
+                    return lineOfScrimmage;
+
+                });
+
                 console.log('1');
+
                 break;
 
             case 2:
@@ -197,11 +196,13 @@ function passPlayLeft() {
             }, 3000);
                 tweenFootballB.start();
                 tweenFootballB.onComplete.add(los, this);
-                function los(){
+
+                function los(lineOfScrimmage){
                    lineOfScrimmage = football.y;
                   console.log("line of scrimmage = ", lineOfScrimmage);
                 }
                 console.log('2');
+                return  lineOfScrimmage;
                 break;
 
             case 3:
@@ -212,12 +213,15 @@ function passPlayLeft() {
             }, 3000);
                 tweenFootballC.start();
                 tweenFootballC.onComplete.add(los, this);
-                function los(){
+
+                function los(lineOfScrimmage){
 
                    lineOfScrimmage = football.y;
                   console.log("line of scrimmage = ", lineOfScrimmage);
+
                 }
                 console.log('3');
+                return lineOfScrimmage
                 break;
 
         }
@@ -516,9 +520,6 @@ function passPlayRight(lineOfScrimmage) {
             }, 2000);
             tweenC.chain(tweenC2);
 
-
-
-
 tweenA.start();
 tweenB.start();
 tweenC.start();
@@ -583,4 +584,9 @@ function qbPass() {
     }
 }
 
+}
+
+function los(){
+  var lineOfScrimmage = football.y;
+  console.log("line of scrimmage = ", lineOfScrimmage);
 }
