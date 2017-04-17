@@ -1,10 +1,11 @@
+
 function yo(){
 
   console.log("hi from game action");
 }
 
 
-var GameActionState  = {
+var OffenseInitState  = {
    preload: function(){
       // game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
       // game.load.script('defensiveplays', '/playbook/defense/defensiveplays.js');
@@ -41,12 +42,10 @@ var GameActionState  = {
 
 
 //================================HUD Graphics ===============================================================
-  create: function(wr1, football, ct, lineOfScrimmage, newBallSpot){
+  create: function(wr1, football, ct, lineOfScrimmage){
 
           game.physics.startSystem(Phaser.Physics.ARCADE);
 
-
-          console.log(" GAS new spots = ", newBallSpotx, newballSpoty);
 
 
           var field = game.add.sprite(15, 50, 'field');
@@ -74,12 +73,13 @@ var GameActionState  = {
                   passLeft.inputEnabled = true;
                   passLeft.events.onInputDown.add(passPlayLeft, this);
 
-    function passPlayLeft(lineOfScrimmage) {
+    function passPlayLeft(newBallSpot) {
 
 
-                      var ct = this.game.add.sprite(newBallSpotx, newballSpoty, 'ct');
-                      ct.scale.setTo(0.03);
-                      var QBx = ct.x - 20;
+                      var ct = this.game.add.sprite(200, 220, 'ct');
+                              ct.scale.setTo(0.03);
+
+                      var QBx = ct.x - 70;
                       var QBy = ct.y;
                       var qb = this.game.add.sprite(QBx, QBy, 'qb');
                       qb.scale.setTo(0.02);
@@ -189,15 +189,17 @@ var GameActionState  = {
                       Base43Defense(passPlayLeft, ct);
                       game.physics.arcade.enable([qb, wr1, wr2, wr3, ct, rg, rt, lg, lt]);
                       qbPass();
-                      function qbPass(lineOfScrimmage) {
+                      return newBallSpot
+                      function qbPass(newBallSpot) {
 
 
                           oldBallSpot = football.y
                           console.log("old spot ", oldBallSpot);
-                          var x =  Math.floor((Math.random() * 3) + 1);
+                          var x = 1;
+                          //  Math.floor((Math.random() * 3) + 1);
                           console.log(x);
                           switch (x) {
-
+                            //passPlayLeft
                               case 1:
 
                               var tweenFootballA = game.add.tween(football).to({
@@ -206,11 +208,13 @@ var GameActionState  = {
                               }, 3000);
                                   tweenFootballA.start();
                                   tweenFootballA.onComplete.add(function newlocation (newBallSpot){
-                                      newBallSpot = football.y;
-                                      console.log("new spot ", newBallSpot );
-                                      return lineOfScrimmage;
 
-                                  });
+                                      newBallSpotx = football.x;
+                                      newballSpoty = football.y;
+                                      console.log("new spot ", newBallSpot.x, newBallSpotx );
+
+                                      return newBallSpotx, newballSpoty;
+                                            });
 
                                   console.log('1');
 
@@ -225,9 +229,11 @@ var GameActionState  = {
                               }, 3000);
                                   tweenFootballB.start();
                                   tweenFootballB.onComplete.add(function newlocation (lineOfScrimmage){
-                                      newBallSpot = football.y;
-                                      console.log("new spot ", newBallSpot );
-                                      return lineOfScrimmage;
+                                      newBallSpotx = football.x;
+                                      newballSpoty = football.y;
+
+                                      console.log("new spot ", newBallSpotx, newballSpoty );
+                                      return newBallSpotx, newballSpoty;
 
                                     });
                                   console.log('2');
@@ -242,9 +248,10 @@ var GameActionState  = {
                               }, 3000);
                                   tweenFootballC.start();
                                   tweenFootballC.onComplete.add(function newlocation (lineOfScrimmage){
-                                      newBallSpot = football.y;
-                                      console.log("new spot ", newBallSpot );
-                                      return lineOfScrimmage;
+                                      newBallSpotx = football.x;
+                                      newBallSpoty = football.y;
+                                      console.log("new spot ", newBallSpotx, newBallSpoty );
+                                      return newBallSpotx, newBallSpoty;
 
                                     });
                                   console.log('3');
@@ -257,7 +264,7 @@ var GameActionState  = {
 
                   }
 
-    console.log(lineOfScrimmage);
+    console.log(newBallSpot);
 
     var passRight = this.game.add.text(0, 550, 'Pass Right', {font:'15px Press Start 2p', fill: '#ffffff' });
             passRight.inputEnabled = true;
@@ -413,15 +420,10 @@ var GameActionState  = {
                             tweenFootballA.start();
                             tweenFootballA.onComplete.add(function newlocation (lineOfScrimmage){
 
-                                newBallSpot = football.y;
-                                console.log("new spot ", newBallSpot );
-
-                                var passingYards = (+oldBallSpot) - (+newBallSpot);
-                                console.log("yards passing ", passingYards);
-                                // return lineOfScrimmage, newBallSpot;
-                                game.state.add('HuddleState', HuddleState);
-                                game.state.start(HuddleState);
-
+                                newBallSpotx = footbal.x;
+                                newBallSpoty = football.y;
+                                console.log("new spot ", newBallSpotx, newBallSpoty );
+                                return newBallSpotx, newballSpoty;
                               });
                             break;
 
@@ -434,16 +436,19 @@ var GameActionState  = {
                         }, 3000);
                             tweenFootballB.start();
                             tweenFootballB.onComplete.add(function newlocation (lineOfScrimmage){
-                                newBallSpot = football.y;
-                                console.log("new spot ", newBallSpot );
-                                return lineOfScrimmage, newBallSpot;
+                              newBallSpotx = football.x;
+                              newBallSpoty = football.y;
+                              console.log("new spot ", newBallSpotx, newBallSpoty );
+                              return newBallSpotx, newballSpoty;
 
                               });
                             console.log('2');
                             passYards();
                             function passYards(oldBallSpot, newBallSpot){
-                                var passingYards = (+oldBallSpot) - (+newBallSpot);
-                                console.log("yards passing ", passingYards);
+                              newBallSpotx = football.x;
+                              newBallSpot = football.y;
+                              console.log("new spot ", newBallSpotx, newballSpoty );
+                              return newBallSpotx, newballSpoty;
                                   }
                             break;
 
@@ -463,8 +468,10 @@ var GameActionState  = {
                             console.log('3');
                             passYards();
                             function passYards(oldBallSpot, newBallSpot){
-                                var passingYards = (+oldBallSpot) - (+newBallSpot);
-                                console.log("yards passing ", passingYards);
+                              newBallSpotx = football.x;
+                              newBallSpot = football.y;
+                              console.log("new spot ", newBallSpotx, newballSpoty );
+                              return newBallSpotx, newballSpoty;;
                                 }
                             break;
 
@@ -593,9 +600,10 @@ var GameActionState  = {
                    }, 3000);
                        tweenFootballA.start();
                        tweenFootballA.onComplete.add(function newlocation (lineOfScrimmage){
-                           newBallSpot = football.y;
-                           console.log("new spot ", newBallSpot );
-                           return lineOfScrimmage;
+                         newBallSpotx = football.x;
+                         newBallSpoty = football.y;
+                         console.log("new spot ", newBallSpotx, newBallSpotx );
+                         return newBallSpotx, newballSpoty;
                        });
                        console.log('1');;
                        break;
@@ -608,9 +616,10 @@ var GameActionState  = {
                    }, 3000);
                        tweenFootballB.start();
                        tweenFootballB.onComplete.add(function newlocation (lineOfScrimmage){
-                           newBallSpot = football.y;
-                           console.log("new spot ", newBallSpot );
-                           return lineOfScrimmage;
+                         newBallSpotx = football.x;
+                         newBallSpoty = football.y;
+                         console.log("new spot ", newBallSpotx, newballSpoty );
+                         return newBallSpotx, newballSpoty;
                            });
                        console.log('2');
 
@@ -622,9 +631,10 @@ var GameActionState  = {
                    }, 3000);
                        tweenFootballC.start();
                        tweenFootballC.onComplete.add(function newlocation (lineOfScrimmage){
-                           newBallSpot = football.y;
-                           console.log("new spot ", newBallSpot );
-                           return lineOfScrimmage;
+                         newBallSpotx = football.x;
+                         newBallSpoty = football.y;
+                         console.log("new spot ", newBallSpotx, newBallSpoty );
+                         return newBallSpotx, newballSpoty;
                            });
                        console.log('3');
                        break;
@@ -639,12 +649,12 @@ var GameActionState  = {
 
 
 
-
-    var runLeft = this.game.add.text(200, 450, 'Run Left', {font:'15px Press Start 2p', fill: '#ffffff' });
-
-    var runMiddle = this.game.add.text(200, 500, 'Run Middle', {font:'15px Press Start 2p', fill: '#ffffff' });
-
-    var runRight = this.game.add.text(200, 550, 'Run Right', {font:'15px Press Start 2p', fill: '#ffffff' });
+    //
+    // var runLeft = this.game.add.text(200, 450, 'Run Left', {font:'15px Press Start 2p', fill: '#ffffff' });
+    //
+    // var runMiddle = this.game.add.text(200, 500, 'Run Middle', {font:'15px Press Start 2p', fill: '#ffffff' });
+    //
+    // var runRight = this.game.add.text(200, 550, 'Run Right', {font:'15px Press Start 2p', fill: '#ffffff' });
 
 
 
@@ -668,10 +678,6 @@ var GameActionState  = {
 
 //end of create brackets -------------
 },
-
-//============================GameButtons===========================================================
-
-
 
 
     update: function(){
