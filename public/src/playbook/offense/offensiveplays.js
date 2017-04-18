@@ -113,10 +113,6 @@ function passPlayLeft(lineOfScrimmage) {
     });
 
 
-
-
-
-
     var football = this.game.add.sprite(ct.x, ct.y, 'football');
           football.scale.setTo(0.08);
 

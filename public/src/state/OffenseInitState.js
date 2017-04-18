@@ -257,7 +257,7 @@ var OffenseInitState  = {
                                   tweenFootballC.onComplete.add(function newlocation (lineOfScrimmage){
                                       newBallSpotx = football.x;
                                       newBallSpoty = football.y;
-                                      time = time - 6;
+
                                       console.log("new spot ", newBallSpotx, newBallSpoty );
                                       return newBallSpotx, newBallSpoty;
 
@@ -791,8 +791,20 @@ var OffenseInitState  = {
 
 
 
+
+
       tweenA.start();
       tweenB.start();
+      tweenB.onComplete.add(function newlocation (){
+
+                newBallSpotx = rb1.x;
+                newBallSpoty = rb1.y;
+
+          console.log ('rb1y ', rb1.x, rb1.y);
+          return newBallSpotx, newBallSpoty;
+          });
+
+
       tweenC.start();
       tweenD.start();
       tweenE.start();
@@ -948,6 +960,10 @@ var OffenseInitState  = {
 
                       game.physics.arcade.enable([qb, wr1, wr2, te1, te2, rb1, ct, rg, rt, lg, lt]);
 
+                      newBallSpotx = rb1.x;
+                      newBallSpoty = rb1.y;
+
+                      return newBallSpotx, newBallSpoty;
 
                     }
 
@@ -1098,7 +1114,10 @@ var OffenseInitState  = {
 
             game.physics.arcade.enable([qb, wr1, wr2, te1, te2, rb1, ct, rg, rt, lg, lt]);
 
+            newBallSpotx = rb1.x;
+            newBallSpoty = rb1.y;
 
+            return newBallSpotx, newBallSpoty;
 
 
     }
@@ -1116,7 +1135,7 @@ var OffenseInitState  = {
 
 
     function switchStateToCoachScreen(){
-      alert("button works");
+
       game.state.add('HuddleState', HuddleState);
       game.state.start('HuddleState');
     }
