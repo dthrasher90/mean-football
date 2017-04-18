@@ -487,8 +487,6 @@ var GameActionState  = {
             }
 
 
-
-
     var passMiddle = this.game.add.text(0, 500, 'Pass Middle', {font:'15px Press Start 2p', fill: '#ffffff' });
             passMiddle.inputEnabled = true;
             passMiddle.events.onInputDown.add(passPlayMiddle, this);
@@ -842,7 +840,59 @@ function runPlayMiddle(){
        var spriteTextTE2 = game.add.text(TE2x, TE2y, 'TE2', {
            font: '9px Press Start 2P'
        });
+
+       var football = this.game.add.sprite(ct.x, ct.y, 'football');
+             football.scale.setTo(0.08);
+
        Base43Defense(runPlayMiddle, ct);
+
+
+                             var tweenA = game.add.tween(qb).to({
+                                 x: '-80'
+                             }, 2000);
+
+                             var tweenB = game.add.tween(rb1).to({
+                                 x: '+80'
+                             }, 2000);
+
+                             var tweenC = game.add.tween(wr1).to({
+                                x: '+60'
+                             }, 2000);
+
+                             var tweenD = game.add.tween(wr2).to({
+                                x: '+60'
+                             }, 2000);
+
+                             var tweenE = game.add.tween(lt).to({
+                                x: '+`10'
+                             }, 2000);
+
+                             var tweenF = game.add.tween(lg).to({
+                                x: '+10'
+                             }, 2000);
+
+                             var tweenG = game.add.tween(rg).to({
+                               x: '+10'
+                             }, 2000);
+
+                             var tweenH = game.add.tween(lt).to({
+                               x: '+10'
+                             }, 2000);
+
+
+
+                             tweenA.start();
+                             tweenB.start();
+                             tweenC.start();
+                             tweenD.start();
+                             tweenE.start();
+                             tweenF.start();
+                             tweenG.start();
+                             tweenH.start();
+
+
+                             game.physics.arcade.enable([qb, wr1, wr2, te1, te2, rb1, ct, rg, rt, lg, lt]);
+
 
 
                }
