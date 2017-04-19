@@ -43,16 +43,18 @@ var OffenseInitState  = {
 
 
 
-//================================HUD Graphics ===============================================================
+
   create: function(wr1, football, ct, lineOfScrimmage){
+    console.log("in OffenseInitState");
+    game.physics.startSystem(Phaser.Physics.ARCADE);
 
-          game.physics.startSystem(Phaser.Physics.ARCADE);
+    console.log("log down  ", game.down);
+    checkDown();
 
 
-
-          var field = game.add.sprite(15, 50, 'field');
-              field.scale.setTo(1.1);
-              field.anchor.setTo(0);
+    var field = game.add.sprite(15, 50, 'field');
+        field.scale.setTo(1.1);
+        field.anchor.setTo(0);
 
 
 
@@ -60,20 +62,18 @@ var OffenseInitState  = {
     var awayScore =0;
 
 
-    scoreTextHome = this.add.text(0.1, 0, 'Home: '+ homeScore, {font: '20px Press Start 2P',fill: '#ffffff' });
+    scoreTextHome = game.add.text(0.1, 0, 'Home: '+ homeScore, {font: '20px Press Start 2P',fill: '#ffffff' });
     scoreTextAway = game.add.text(0.1, 21, 'Away: ' + awayScore, {font: '20px Press Start 2P', fill: '#ffffff' });
 
 
-    DownLog = game.add.text(650, 0, '1 & 10 ',{font: '20px Press Start 2p', fill: '#ffffff' });
+    var DownLog = game.add.text(650, 0, game.down + ' & 10 ',{font: '20px Press Start 2p', fill: '#ffffff' });
             GameLog= game.add.text(0, 400, 'Game Log',{font: '20px Press Start 2P', fill: '#cccc00' });
-
-
-    console.log(newBallSpot);
 
 
     var passLeft = this.game.add.text(0, 450, 'Pass Left', {font:'15px Press Start 2p', fill: '#ffffff' });
                   passLeft.inputEnabled = true;
                   passLeft.events.onInputDown.add(passPlayLeft, this);
+
     function passPlayLeft(newBallSpot) {
 
 
@@ -203,13 +203,12 @@ var OffenseInitState  = {
 
                           oldBallSpot = football.y
                           console.log("old spot ", oldBallSpot);
-                          var x = 1;
-                          //  Math.floor((Math.random() * 3) + 1);
+                          var x =  Math.floor((Math.random() * 3) + 1);
                           console.log(x);
                           switch (x) {
                             //passPlayLeft
                               case 1:
-
+                              checkCatch();
                               var tweenFootballA = game.add.tween(football).to({
                                   x: '+100',
                                   y: '-150'
@@ -229,7 +228,7 @@ var OffenseInitState  = {
 
                               case 2:
 
-
+                              checkCatch();
                               var tweenFootballB = game.add.tween(football).to({
                                   x: '+100',
                                   y: '-50'
@@ -248,7 +247,7 @@ var OffenseInitState  = {
                                   break;
 
                               case 3:
-
+                              checkCatch();
                               var tweenFootballC = game.add.tween(football).to({
                                   x: '+100',
                                   y: '-100'
@@ -414,9 +413,11 @@ var OffenseInitState  = {
 
                 function qbPass() {
 
+
                     //pass play right
-                    oldBallSpot = football.y;
-                    console.log("old spot ", oldBallSpot);
+                    oldBallSpotx = football.x;
+                    oldBallSpoty = football.y;
+
                     var x = 1;
 
                     //Math.floor((Math.random() * 3) + 1);
@@ -432,13 +433,15 @@ var OffenseInitState  = {
                         }, 3000);
                             tweenFootballA.start();
                             tweenFootballA.onComplete.add(function newlocation (){
+                              checkCatch();
+                              newBallSpotx = football.x;
+                              newBallSpoty = football.y;
 
-                                newBallSpotx = football.x;
-                                newBallSpoty = football.y;
-                                console.log("new spot ", newBallSpotx, newBallSpoty);
+                                console.log("new spot ", newBallSpotx, newBallSpoty,  "oldspot ", oldBallSpotx, oldBallSpoty);
                                 return newBallSpotx, newBallSpoty;
 
                               });
+
                             break;
 
                         case 2:
@@ -453,10 +456,11 @@ var OffenseInitState  = {
                               newBallSpotx = football.x;
                               newBallSpoty = football.y;
                               console.log("new spot ", newBallSpotx, newBallSpoty);
+                              checkCatch(newBallSpotx, newBallSpoty);
                               return newBallSpotx, newBallSpoty;
                                 console.log('2');
                               });
-
+                                c
 
                             break;
 
@@ -464,16 +468,18 @@ var OffenseInitState  = {
 
                         var tweenFootballC = game.add.tween(football).to({
                             x: '+100',
-                            y: '+300'
+                            y: '+75'
                         }, 3000);
                             tweenFootballC.start();
                             tweenFootballC.onComplete.add(function newlocation (newBallSpotx, newBallSpoty){
                               newBallSpotx = football.x;
                               newBallSpoty = football.y;
+                              checkCatch(newBallSpotx, newBallSpoty);
                               console.log("new spot ", newBallSpotx, newBallSpoty);
                               return newBallSpotx, newBallSpoty;
                               });
                             console.log('3');
+
 
                             break;
 
@@ -486,6 +492,7 @@ var OffenseInitState  = {
             passMiddle.inputEnabled = true;
             passMiddle.events.onInputDown.add(passPlayMiddle, this);
     function passPlayMiddle(){
+
                  var ct = this.game.add.sprite(200, 220, 'ct');
                  ct.scale.setTo(0.03);
 
@@ -603,23 +610,26 @@ var OffenseInitState  = {
                console.log('original line == ', lineOfScrimmage);
                switch (x) {
 
-                   case 1:
-                   var tweenFootballA = game.add.tween(football).to({
-                       x: '+100',
-                       y: '+150'
-                   }, 3000);
-                       tweenFootballA.start();
-                       tweenFootballA.onComplete.add(function newlocation (){
-                         newBallSpotx = football.x;
-                         newBallSpoty = football.y;
-                         console.log("new spot ", newBallSpotx, newBallSpoty);
-                         return newBallSpotx, newBallSpoty;
-                       });
-                       console.log('1');;
+                     case 1:
+
+                       checkCatch();
+                       var tweenFootballA = game.add.tween(football).to({
+                           x: '+100',
+                           y: '+150'
+                       }, 3000);
+                           tweenFootballA.start();
+                           tweenFootballA.onComplete.add(function newlocation (){
+                             newBallSpotx = football.x;
+                             newBallSpoty = football.y;
+                             console.log("new spot ", newBallSpotx, newBallSpoty);
+                             return newBallSpotx, newBallSpoty;
+                           });
+                           console.log('1');;
                        break;
 
                    case 2:
 
+                   checkCatch();
                    var tweenFootballB = game.add.tween(football).to({
                        x: '+100',
                        y: '+250'
@@ -635,6 +645,7 @@ var OffenseInitState  = {
 
                    case 3:
 
+                   checkCatch();
                    var tweenFootballC = game.add.tween(football).to({
                        x: '+100',
                        y: '+350'
@@ -653,9 +664,6 @@ var OffenseInitState  = {
            }
 
            }
-
-
-
 
 
     var runLeft = this.game.add.text(200, 450, 'Run Left', {font:'15px Press Start 2p', fill: '#ffffff' });
@@ -821,8 +829,6 @@ var OffenseInitState  = {
 
     }
 
-
-
     var runMiddle = this.game.add.text(200, 500, 'Run Middle', {font:'15px Press Start 2p', fill: '#ffffff' });
                     runMiddle.inputEnabled = true;
                     runMiddle.events.onInputDown.add(runPlayMiddle, this);
@@ -968,11 +974,12 @@ var OffenseInitState  = {
                     }
 
 
-
     var runRight = this.game.add.text(200, 550, 'Run Right', {font:'15px Press Start 2p', fill: '#ffffff' });
                     runRight.inputEnabled = true;
                     runRight.events.onInputDown.add(runPlayRight, this);
     function runPlayRight(){
+
+
       var ct = this.game.add.sprite(200, 220, 'ct');
               ct.scale.setTo(0.03);
 
@@ -1123,15 +1130,13 @@ var OffenseInitState  = {
     }
 
 
-
-
-
-
-
-
     var coach = this.add.text(770, 400, "Coach Screen", {font: '18px Press Start 2p', fill: '#ffffff'});
                 coach.inputEnabled = true;
                 coach.events.onInputDown.add(switchStateToCoachScreen, this);
+
+
+
+
 
 
     function switchStateToCoachScreen(){

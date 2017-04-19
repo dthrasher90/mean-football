@@ -10,8 +10,8 @@ body{
   margin-top:  50px;
   height: 100px;
   width:250px;
+  position: absolute;;
 
-  position: absolute;
   font-size: 8px;
 }
 

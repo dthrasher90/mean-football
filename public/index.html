@@ -7,53 +7,21 @@
     <!-- <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P" ></script>
     <script src="phaser.js">  </script>
-    <script src= "src/state/GameActionState.js"></script>
-    <script src="src/state/OffenseInitState.js">  </script>
+    <script src="src/state/GameActionState.js"></script>
+    <script src="src/state/OffenseInitState.js"></script>
+    <script src="src/state/HuddleState.js"></script>
     <script src="src/playbook/offense/offensiveplays.js"></script>
-    <script src= "src/playbook/defense/defensiveplays.js"></script>
-
-
-
-    <!-- <script src="offensiveplays.js"></script> -->
+    <script src="src/playbook/defense/defensiveplays.js"></script>
+    <script src="src/gamelogic/app.js"></script>
     <link rel="stylesheet" href="main.css">
   </head>
   <body ng-app>
     <h1>HEAD COACH</h1>
 
+  <div class= "roster">
+    PassYds =   <p id = "passingYards"></p>
 
-
-<div class="roster">
-    <table>
-        <tr>
-            <th> Player</th>
-            <th> Health </th>
-            <th> Coach </th>
-        </tr>
-        <td> QB </td>
-        <td> 100%</td>
-        <tr>
-            <td> RB1 </td>
-            <td> 100%</td>
-        </tr>
-        <tr>
-            <td> WR1 </td>
-            <td> 100%</td>
-        </tr>
-        <tr>
-            <td> WR2 </td>
-            <td> 100%</td>
-        </tr>
-        <tr>
-            <td> WR3 </td>
-            <td> 100%</td>
-        </tr>
-        <tr>
-            <td> TE1</td>
-            <td> 100%</td>
-        </tr>
-
-    </table>
-</div>
+  </div>
 
   </body>
 </html>
@@ -61,96 +29,15 @@
 <script type="text/javascript">
 
 
-            var wr1, wr2, wr3, wr4, football, yards, passing;
-            var scoreTextHome, scoreTextAway, Time, GameLog, DownLog;
-            var newBallSpot, oldBallSpot
-
             var game = new Phaser.Game(1000, 600, Phaser.AUTO);
                 game.state.add('GameActionState', GameActionState);
+                game.state.add('OffenseInitState', OffenseInitState);
+                game.state.add('HuddleState', HuddleState);
+                game.state.start('OffenseInitState');
 
-///////======================HUDDLE STATE+++++++++++++++++++++++++++++++++++
-
-          var HuddleState  = {
-                   preload: function(){
-                      game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
-
-                      game.load.image('field', 'footballfield.jpg');
-                      game.load.image('wr1', 'reddot.png');
-                      game.load.image('wr2', 'reddot.png');
-                      game.load.image('wr3', 'reddot.png');
-                      game.load.image('wr4', 'reddot.png');
-                      game.load.image('qb', 'reddot.png');
-                      game.load.image('lt', 'reddot.png');
-                      game.load.image('lg', 'reddot.png');
-                      game.load.image('ct', 'reddot.png');
-                      game.load.image('rg', 'reddot.png');
-                      game.load.image('rt', 'reddot.png');
-                      game.load.image('football','football.png');
-
-                    },
-
-                    create:  function(){
-
-                        var field = this.game.add.button(15, 50, 'field');
-                            field.scale.setTo(1.1);
-                            field.anchor.setTo(0);
-// =========================SCOREBOARD CREATED====================================================================
-                    var scoreTextHome, scoreTextAway, Time, GameLog, DownLog;
-                    var homeScore= 0;
-                    var awayScore =0;
-
-                      scoreTextHome = this.add.text(0.1, 0, 'Home: '+ homeScore, {font: '20px Press Start 2P',fill: '#ffffff' });
-                      scoreTextAway = game.add.text(0.1, 21, 'Away: ' + awayScore, {font: '20px Press Start 2P', fill: '#ffffff' });
-                      Time = this.game.add.text(310, 0, 'Time: 00:00', {font: '20px Press Start 2P', fill: '#ffffff' });
-                      DownLog = game.add.text(650, 0, '1 & 10 ',{font: '20px Press Start 2p', fill: '#ffffff' });
-
-                      GameLog= this.add.text(0, 400, 'Test Defense',{font: '20px Press Start 2P', fill: '#cccc00' });
-                      // GameLog.inputEnabled = true;
-                      // GameLog.events.onInputDown.add(switchStateTo, this);
-
-                      breakHuddle = game.add.text(820, 400, "BREAK!!", {font: '24px Press Start 2p', fill: '#ffffff'});
-                      breakHuddle.inputEnabled = true;
-                      breakHuddle.events.onInputDown.add(switchStateToGameAction, this);
-
-
-                        console.log(newBallSpot);
-
-
-                                function switchStateToGameAction(){
-                                  game.state.add('GameActionState', GameActionState);
-                                  game.state.start('GameActionState');
-                                }
-
-                                function switchStateToHuddle(){
-                                  game.state.add('HuddleState', HuddleState);
-                                  game.state.start('HuddleState');
-                                }
-
-
-//create function bracket --- do not erase
-  },
-
-
-                    update: function(){
-;
-                    }
-
-//-------------************ End Huddle State*********************-------------
-};
-
-
-
-
-
-
-              game.state.add('GameActionState', GameActionState);
-              game.state.add('OffenseInitState', OffenseInitState);
-
-              game.state.start('OffenseInitState');
-
-
-
-
+                game.down = 1;
+                game.passingYards = 0;
+                document.getElementById("passingYards").innerHTML = game.passingYards;
 
 
 </script>
