@@ -433,7 +433,7 @@ function passPlayRight() {
               switch (x) {
 
                   case 1:
-                  checkCatch();
+
                   var tweenFootballA = game.add.tween(football).to({
                       x: '+100',
                       y: '+150'
@@ -445,24 +445,27 @@ function passPlayRight() {
                         newBallSpoty = football.y;
                         console.log("new spot ", newBallSpotx, newBallSpoty);
 
+                        checkCatch(newBallSpotx, newBallSpoty);
                         return newBallSpotx, newBallSpoty;
                         });
                       break;
 
                   case 2:
 
-                  checkCatch();
+
                   var tweenFootballB = game.add.tween(football).to({
                       x: '+100',
                       y: '+200'
                   }, 3000);
                       tweenFootballB.start();
                       tweenFootballB.onComplete.add(function newlocation (){
-                            newBallSpotx = football.x;
-                            newBallSpoty = football.y;
-                            console.log("new spot ", newBallSpotx, newBallSpoty);
+                        newBallSpotx = football.x;
+                        newBallSpoty = football.y;
+                        console.log("new spot ", newBallSpotx, newBallSpoty);
 
-                            return newBallSpotx, newBallSpoty;
+                        checkCatch(newBallSpotx, newBallSpoty);
+                        return newBallSpotx, newBallSpoty;
+
                         });
                       console.log('2');
 
@@ -471,18 +474,18 @@ function passPlayRight() {
 
                   case 3:
 
-                  checkCatch();
                   var tweenFootballC = game.add.tween(football).to({
                       x: '+100',
                       y: '+100'
                   }, 3000);
                       tweenFootballC.start();
                       tweenFootballC.onComplete.add(function newlocation (){
-                            newBallSpotx = football.x;
-                            newBallSpoty = football.y;
-                            console.log("new spot ", newBallSpotx, newBallSpoty);
+                        newBallSpotx = football.x;
+                        newBallSpoty = football.y;
+                        console.log("new spot ", newBallSpotx, newBallSpoty);
 
-                            return newBallSpotx, newBallSpoty;
+                        checkCatch(newBallSpotx, newBallSpoty);
+                        return newBallSpotx, newBallSpoty;
                         });
                       console.log('3');
 

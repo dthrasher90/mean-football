@@ -203,23 +203,35 @@ var OffenseInitState  = {
 
                           oldBallSpot = football.y
                           console.log("old spot ", oldBallSpot);
-                          var x =  Math.floor((Math.random() * 3) + 1);
+                          var x = 1;
+                          // Math.floor((Math.random() * 3) + 1);
                           console.log(x);
                           switch (x) {
                             //passPlayLeft
                               case 1:
-                              checkCatch();
+
                               var tweenFootballA = game.add.tween(football).to({
                                   x: '+100',
                                   y: '-150'
                               }, 3000);
+
+
                                   tweenFootballA.start();
+
+
                                   tweenFootballA.onComplete.add(function newlocation (newBallSpot){
+
+
 
                                       newBallSpotx = football.x;
                                       newBallSpoty = football.y;
-                                      console.log("new spot ", newBallSpot.x, newBallSpoty );
-                                      return newBallSpotx, newBallSpoty;
+
+                                      newX =  newBallSpotx;
+                                      oldX = oldBallSpot;
+
+                                      checkCatch(newstatx, oldstatx);
+                                      console.log("new spot ", newBallSpotx, newBallSpoty );
+                                      return newBallSpotx, newBallSpoty, newX, oldX;
                                             });
 
                                   console.log('1');
@@ -433,11 +445,14 @@ var OffenseInitState  = {
                         }, 3000);
                             tweenFootballA.start();
                             tweenFootballA.onComplete.add(function newlocation (){
-                              checkCatch();
+
+
                               newBallSpotx = football.x;
                               newBallSpoty = football.y;
-
-                                console.log("new spot ", newBallSpotx, newBallSpoty,  "oldspot ", oldBallSpotx, oldBallSpoty);
+                              // checkCatch();
+                                console.log("new spot ", newBallSpotx,newBallSpoty,  "oldspot ", oldBallSpotx, oldBallSpoty);
+                                console.log(newBallSpotx);
+                                checkCatch(newBallSpotx, newBallSpoty, oldBallSpotx);
                                 return newBallSpotx, newBallSpoty;
 
                               });
@@ -456,7 +471,7 @@ var OffenseInitState  = {
                               newBallSpotx = football.x;
                               newBallSpoty = football.y;
                               console.log("new spot ", newBallSpotx, newBallSpoty);
-                              checkCatch(newBallSpotx, newBallSpoty);
+                              checkCatch(newBallSpotx, newBallSpoty, oldBallSpotx);
                               return newBallSpotx, newBallSpoty;
                                 console.log('2');
                               });
@@ -474,7 +489,7 @@ var OffenseInitState  = {
                             tweenFootballC.onComplete.add(function newlocation (newBallSpotx, newBallSpoty){
                               newBallSpotx = football.x;
                               newBallSpoty = football.y;
-                              checkCatch(newBallSpotx, newBallSpoty);
+                              checkCatch(newBallSpotx, newBallSpoty, oldBallSpotx);
                               console.log("new spot ", newBallSpotx, newBallSpoty);
                               return newBallSpotx, newBallSpoty;
                               });

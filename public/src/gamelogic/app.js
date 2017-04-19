@@ -2,28 +2,24 @@ function app(){
   console.log("game logic folder");
 }
 
-function checkCatch(oldBallSpot, newBallSpotx, newBallSpoty){
-
+function checkCatch( newBallSpotx, newBallSpoty, oldBallSpotx){
+  console.log(newBallSpotx, newBallSpoty);
   var d20 = 15;
 //  Math.floor((Math.random() * 20) + 1);
   console.log(d20);
+  console.log(oldBallSpotx)
 
       if (d20 > 10) {
        console.log("wr caught the ball");
+       console.log("old/new  ", newBallSpotx, oldBallSpotx)
+       var passing = (newBallSpotx - oldBallSpotx)/6;
 
-       var newXYards = +newBallSpotx;
-       var oldXYards = +oldBallSpotx;
-
-       game.passingYards = ("pass  ", newXYards - oldXYards)/10;
-       console.log("payssing yard stats  = ", game.passingYards);
+       console.log("passing yard stats  = ", passing);
 
      } else {
        console.log("incompelte pass");
-       var newXYards = +newBallSpotx;
-       var oldXYards = +oldBallSpotx;
 
-      //  var yards  = newBallSpotx - oldBallSpotx;
-       console.log("yards = ",newXYards, oldXYards);
+      //  console.log("yards = ",newXYards, oldXYards);
 
      }
 
