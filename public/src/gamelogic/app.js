@@ -1,6 +1,5 @@
 function app(){
   console.log("game logic folder");
-}
 
 function checkCatch( newBallSpotx, newBallSpoty, oldBallSpotx){
   console.log(newBallSpotx, newBallSpoty);

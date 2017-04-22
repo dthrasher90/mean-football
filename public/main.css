@@ -1,17 +1,18 @@
 body{
   font-family: "Press Start 2P", cursive;
-  background: black;
-  color: white;
+  /*background: black;*/
+  color: steelblue;
+  overflow: hidden;
 
 }
 
 .roster{
   margin-left: 810px;
-  margin-top:  50px;
-  height: 100px;
-  width:250px;
-  position: absolute;;
 
+  height: 1000px;
+  width: 500px;
+
+  position: absolute;
   font-size: 8px;
 }
 

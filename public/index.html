@@ -1,25 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp" >
   <head>
     <meta charset="utf-8">
     <title>MEAN FOOTBALL</title>
+    <script src="angular.js"></script>
+    <!-- <script scr="angular-ui-router.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
 
-    <!-- <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script> -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P" ></script>
     <script src="phaser.js">  </script>
     <script src="src/state/GameActionState.js"></script>
     <script src="src/state/OffenseInitState.js"></script>
     <script src="src/state/HuddleState.js"></script>
+    <script src="src/controller/gamecontroller.js"> </script>
     <script src="src/playbook/offense/offensiveplays.js"></script>
     <script src="src/playbook/defense/defensiveplays.js"></script>
-    <script src="src/gamelogic/app.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
     <link rel="stylesheet" href="main.css">
   </head>
-  <body ng-app>
+
+
+  <body ng-controller="myCtrl">
     <h1>HEAD COACH</h1>
 
-  <div class= "roster">
-    PassYds =   <p id = "passingYards"></p>
+
+
+    <div class="roster">
+
+      <diu ui-view> </div>
+      <h1>Test</h1>
+
 
   </div>
 
@@ -29,15 +41,17 @@
 <script type="text/javascript">
 
 
-            var game = new Phaser.Game(1000, 600, Phaser.AUTO);
+            var wr1, wr2, wr3, wr4, football, yards, passing;
+            var scoreTextHome, scoreTextAway, Time, GameLog, DownLog;
+            var newBallSpot, oldBallSpot;
+
+            var game = new Phaser.Game(800, 500, Phaser.AUTO);
                 game.state.add('GameActionState', GameActionState);
-                game.state.add('OffenseInitState', OffenseInitState);
-                game.state.add('HuddleState', HuddleState);
-                game.state.start('OffenseInitState');
 
-                game.down = 1;
-                game.passingYards = 0;
-                document.getElementById("passingYards").innerHTML = game.passingYards;
 
+              game.state.add('GameActionState', GameActionState);
+              game.state.add('OffenseInitState', OffenseInitState);
+//game.state.add('HuddleState', HuddleState);
+              game.state.start('OffenseInitState');
 
 </script>
