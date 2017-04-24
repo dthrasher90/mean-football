@@ -44,13 +44,13 @@ var HuddleState  = {
 
           console.log("down === ", game.down);
 
-          scoreTextHome = this.add.text(0.1, 0, 'Home: '+ homeScore, {font: '20px Press Start 2P',fill: '#ffffff' });
-          scoreTextAway = game.add.text(0.1, 21, 'Away: ' + awayScore, {font: '20px Press Start 2P', fill: '#ffffff' });
-          Time = this.game.add.text(310, 0, 'Time: 00:00', {font: '20px Press Start 2P', fill: '#ffffff' });
-          DownLog = game.add.text(650, 0,  game.down + ' & 10 ',{font: '20px Press Start 2p', fill: '#ffffff' });
+          // scoreTextHome = this.add.text(0.1, 0, 'Home: '+ homeScore, {font: '20px Press Start 2P',fill: '#ffffff' });
+          // scoreTextAway = game.add.text(0.1, 21, 'Away: ' + awayScore, {font: '20px Press Start 2P', fill: '#ffffff' });
+          // Time = this.game.add.text(310, 0, 'Time: 00:00', {font: '20px Press Start 2P', fill: '#ffffff' });
+          // DownLog = game.add.text(650, 0,  game.down + ' & 10 ',{font: '20px Press Start 2p', fill: '#ffffff' });
 
 
-          breakHuddle = game.add.text(820, 400, "BREAK!!", {font: '24px Press Start 2p', fill: '#ffffff'});
+          breakHuddle = game.add.text(500, 400, "BREAK!!", {font: '24px Press Start 2p', fill: '#ffffff'});
           breakHuddle.inputEnabled = true;
           breakHuddle.events.onInputDown.add(switchStateToGameAction, this);
 

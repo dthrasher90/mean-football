@@ -12,7 +12,7 @@
     <script src="src/state/OffenseInitState.js"></script>
     <script src="src/state/HuddleState.js"></script>
     <script src="src/controller/gamecontroller.js"> </script>
-    <script src="src/playbook/offense/offensiveplays.js"></script>
+    <script src="src/playbook/offense/yo.js"></script>
     <script src="src/playbook/defense/defensiveplays.js"></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -23,14 +23,22 @@
 
 
   <body ng-controller="myCtrl">
-    <h1>HEAD COACH</h1>
+
 
 
 
     <div class="roster">
+<!--
+      <section ui-view> </section> -->
+      <h1>Home: 0
+          Away: 0</h1>
+      <button type="button" onclick="passPlayLeft()"  class="btn btn-info">Pass Left</button>
+      <button type="button" onclick="passPlayMiddle()"  class="btn btn-info">Pass Middle</button>
+      <button type="button" onclick="passPlayRight()"  class="btn btn-info">Pass Right</button>
+      <button type="button" onclick="runPlayLeft()"  class="btn btn-info">Run Left</button>
+      <button type="button" onclick="runPlayMiddle()"  class="btn btn-info">Run Middle</button>
+      <button type="button" onclick="runPlayRight()" class="btn btn-info">Run Right</button>
 
-      <diu ui-view> </div>
-      <h1>Test</h1>
 
 
   </div>
@@ -39,6 +47,8 @@
 </html>
 
 <script type="text/javascript">
+
+
 
 
             var wr1, wr2, wr3, wr4, football, yards, passing;

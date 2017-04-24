@@ -1,6 +1,12 @@
 function app(){
   console.log("game logic folder");
 
+
+  function alert(){
+    alert("button works");
+  }
+
+  
 function checkCatch( newBallSpotx, newBallSpoty, oldBallSpotx){
   console.log(newBallSpotx, newBallSpoty);
   var d20 = 15;

@@ -1,6 +1,6 @@
 body{
   font-family: "Press Start 2P", cursive;
-  /*background: black;*/
+  background: black;
   color: steelblue;
   overflow: hidden;
 
@@ -10,7 +10,7 @@ body{
   margin-left: 810px;
 
   height: 1000px;
-  width: 500px;
+  width: 600px;
 
   position: absolute;
   font-size: 8px;

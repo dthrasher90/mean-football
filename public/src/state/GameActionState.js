@@ -54,25 +54,25 @@ var GameActionState  = {
               field.anchor.setTo(0);
 
 
-
-    var homeScore= 0;
-    var awayScore =0;
-
-
-        scoreTextHome = this.add.text(0.1, 0, 'Home: '+ homeScore, {font: '20px Press Start 2P',fill: '#ffffff' });
-        scoreTextAway = game.add.text(0.1, 21, 'Away: ' + awayScore, {font: '20px Press Start 2P', fill: '#ffffff' });
-
-        Time = this.game.add.text(310, 0, 'Time: 00:00', {font: '20px Press Start 2P', fill: '#ffffff' });
-
-        DownLog = game.add.text(650, 0, '1 & 10 ',{font: '20px Press Start 2p', fill: '#ffffff' });
-                GameLog= game.add.text(0, 400, 'Game Log',{font: '20px Press Start 2P', fill: '#cccc00' });
+    //
+    // var homeScore= 0;
+    // var awayScore =0;
+    //
+    //
+    //     scoreTextHome = this.add.text(0.1, 0, 'Home: '+ homeScore, {font: '20px Press Start 2P',fill: '#ffffff' });
+    //     scoreTextAway = game.add.text(0.1, 21, 'Away: ' + awayScore, {font: '20px Press Start 2P', fill: '#ffffff' });
+    //
+    //     Time = this.game.add.text(310, 0, 'Time: 00:00', {font: '20px Press Start 2P', fill: '#ffffff' });
+    //
+    //     DownLog = game.add.text(650, 0, '1 & 10 ',{font: '20px Press Start 2p', fill: '#ffffff' });
+    //             GameLog= game.add.text(0, 400, 'Game Log',{font: '20px Press Start 2P', fill: '#cccc00' });
 
 
 // ======================Pass Plays ======================================================
-
-    var passLeft = this.game.add.text(0, 450, 'Pass Left', {font:'15px Press Start 2p', fill: '#ffffff' });
-                  passLeft.inputEnabled = true;
-                  passLeft.events.onInputDown.add(passPlayLeft, this);
+    //
+    // var passLeft = this.game.add.text(0, 450, 'Pass Left', {font:'15px Press Start 2p', fill: '#ffffff' });
+    //               passLeft.inputEnabled = true;
+    //               passLeft.events.onInputDown.add(passPlayLeft, this);
     function passPlayLeft() {
 
 
@@ -275,9 +275,9 @@ var GameActionState  = {
 
 
 
-    var passRight = this.game.add.text(0, 550, 'Pass Right', {font:'15px Press Start 2p', fill: '#ffffff' });
-            passRight.inputEnabled = true;
-            passRight.events.onInputDown.add(passPlayRight, this);
+    // var passRight = this.game.add.text(0, 550, 'Pass Right', {font:'15px Press Start 2p', fill: '#ffffff' });
+    //         passRight.inputEnabled = true;
+    //         passRight.events.onInputDown.add(passPlayRight, this);
     function passPlayRight() {
 
 
@@ -486,10 +486,10 @@ var GameActionState  = {
 
             }
 
-
-    var passMiddle = this.game.add.text(0, 500, 'Pass Middle', {font:'15px Press Start 2p', fill: '#ffffff' });
-            passMiddle.inputEnabled = true;
-            passMiddle.events.onInputDown.add(passPlayMiddle, this);
+    //
+    // var passMiddle = this.game.add.text(0, 500, 'Pass Middle', {font:'15px Press Start 2p', fill: '#ffffff' });
+    //         passMiddle.inputEnabled = true;
+    //         passMiddle.events.onInputDown.add(passPlayMiddle, this);
     function passPlayMiddle(){
                  var ct = this.game.add.sprite(newBallSpotx, 220, 'ct');
                  ct.scale.setTo(0.03);
@@ -658,11 +658,11 @@ var GameActionState  = {
 
 
 
-var runMiddle = this.game.add.text(200, 500, 'Run Middle', {font:'15px Press Start 2p', fill: '#ffffff' });
-               runMiddle.inputEnabled = true;
-               runMiddle.events.onInputDown.add(runPlayMiddle, this);
+// var runMiddle = this.game.add.text(200, 500, 'Run Middle', {font:'15px Press Start 2p', fill: '#ffffff' });
+//                runMiddle.inputEnabled = true;
+//                runMiddle.events.onInputDown.add(runPlayMiddle, this);
 function runPlayMiddle(){
-
+        kickoff();
        var ct = this.game.add.sprite(200, 220, 'ct');
                ct.scale.setTo(0.03);
 
@@ -915,8 +915,6 @@ function runPlayMiddle(){
                runLeft.inputEnabled = true;
                runLeft.events.onInputDown.add(runPlayLeft, this);
  function runPlayLeft (){
-
-
        var ct = this.game.add.sprite(newBallSpotx, 220, 'ct');
                ct.scale.setTo(0.03);
        var QBx = ct.x - 20;
@@ -1035,8 +1033,6 @@ function runPlayMiddle(){
       x: '+10'
     }, 2000);
 
-
-//runLeft
     tweenA.start();
     tweenB.start();
     tweenB.onComplete.add(function newlocation (){
@@ -1063,10 +1059,10 @@ function runPlayMiddle(){
  }
 
 
-
- var runMiddle = this.game.add.text(200, 500, 'Run Middle', {font:'15px Press Start 2p', fill: '#ffffff' });
-                 runMiddle.inputEnabled = true;
-                 runMiddle.events.onInputDown.add(runPlayMiddle, this);
+ //
+ // var runMiddle = this.game.add.text(200, 500, 'Run Middle', {font:'15px Press Start 2p', fill: '#ffffff' });
+ //                 runMiddle.inputEnabled = true;
+ //                 runMiddle.events.onInputDown.add(runPlayMiddle, this);
  function runPlayMiddle(){
 
      var ct = this.game.add.sprite(newBallSpotx, 220, 'ct');
@@ -1220,9 +1216,9 @@ function runPlayMiddle(){
 
 
 
- var runRight = this.game.add.text(200, 550, 'Run Right', {font:'15px Press Start 2p', fill: '#ffffff' });
-                 runRight.inputEnabled = true;
-                 runRight.events.onInputDown.add(runPlayRight, this);
+ // var runRight = this.game.add.text(200, 550, 'Run Right', {font:'15px Press Start 2p', fill: '#ffffff' });
+ //                 runRight.inputEnabled = true;
+ //                 runRight.events.onInputDown.add(runPlayRight, this);
  function runPlayRight(){
    var ct = this.game.add.sprite(newBallSpotx, 220, 'ct');
            ct.scale.setTo(0.03);

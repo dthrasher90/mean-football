@@ -3,9 +3,11 @@ var myapp = angular.module('myApp', ['ui.router']);
 
 myapp.config(function($stateProvider) {
 
+    $stateProvider.state('test', {
+      template: '<h1> Test </h1>'
 
-  // $stateProvider.state(helloState);
-  // $stateProvider.state(aboutState);
+    })
+//end brackets
 });
 
 myapp.controller('myCtrl', function ($scope){
