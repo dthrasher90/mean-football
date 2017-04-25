@@ -1,23 +1,48 @@
-function hithere(){
-  console.log("hello from offensive plays!");
-}
+
+var scored;
+
 
 
 function kickoff(){
-  newBallSpotx=220;
-
-  console.log("kickoff results in touchback");
-  var ct = game.add.sprite(newBallSpotx, 220, 'ct');
-  ct.scale.setTo(0.03);
-
-  game.physics.arcade.enable([ct]);
+  newBallSpotx=210;
+  return newBallSpotx;
 
 }
 
+function checkScored(newBallSpotx){
+  scored == true;
+  if(scored !== true){
+    newBallSpotx = oldBallSpot;
+
+  }
+  else {
+    newBallSpotx = footballx;
+    kickoff();
+    console.log("the kickoff resulted in a touchback");
+    return newBallSpotx;
+  }
+}
+
+function switchStateToHuddle(){
+    game.state.add('HuddleState', HuddleState);
+    game.state.start('HuddleState');
+}
+
+
 function passPlayLeft() {
-      kickoff();
-      var ct = game.add.sprite(newBallSpotx, 220, 'ct');
-      ct.scale.setTo(0.03);
+   var touchBack = true;
+
+      if (touchBack !== true){
+
+  var ct = game.add.sprite(newBallSpotx, 220, 'ct');
+      ct.scale.setTo(0.02);
+
+    } else {
+
+      var ct = game.add.sprite(220, 220, 'ct');
+          ct.scale.setTo(0.02);
+
+    }
 
       var QBx = ct.x - 20;
       var QBy = ct.y;
@@ -32,21 +57,19 @@ function passPlayLeft() {
           font: '9px Press Start 2P'
       });
 
-
       var RGx = ct.x;
       var RGy = ct.y + 20;
 
       var rg = this.game.add.sprite(RGx, RGy, 'rg');
-      rg.scale.setTo(0.03);
+      rg.scale.setTo(0.02);
       var spriteTextRG = game.add.text(RGx, RGy, 'RG', {
           font: '9px Press Start 2P'
       });
 
-
       var RTx = ct.x;
       var RTy = rg.y + 20;
       var rt = this.game.add.sprite(RTx, RTy, 'rt');
-      rt.scale.setTo(0.03);
+      rt.scale.setTo(0.02);
       var spriteTextRT = game.add.text(RTx, RTy, 'RT', {
           font: '9px Press Start 2P'
       });
@@ -54,7 +77,7 @@ function passPlayLeft() {
       var LGx = ct.x;
       var LGy = ct.y - 20;
       var lg = this.game.add.sprite(LGx, LGy, 'lg');
-      lg.scale.setTo(0.03);
+      lg.scale.setTo(0.02);
       var spriteTextLG = game.add.text(LGx, LGy, 'LG', {
           font: '9px Press Start 2P'
       });
@@ -63,7 +86,7 @@ function passPlayLeft() {
       var LTx = ct.x;
       var LTy = lg.y - 20;
       var lt = this.game.add.sprite(LTx, LTy, 'lt');
-      lt.scale.setTo(0.03);
+      lt.scale.setTo(0.02);
       var spriteTextLT = game.add.text(LTx, LTy, 'LT', {
           font: '9px Press Start 2P'
       });
@@ -160,8 +183,9 @@ function passPlayLeft() {
                     newBallSpotx = football.x;
                     newBallSpoty = football.y;
                     console.log("new spot ", newBallSpotx, newBallSpoty);
+                    switchStateToHuddle();
+                    return newBallSpotx, newBallSpoty, scored == false;
 
-                    return newBallSpotx, newBallSpoty;
 
                   });
 
@@ -181,8 +205,9 @@ function passPlayLeft() {
                     newBallSpotx = football.x;
                     newBallSpoty = football.y;
                     console.log("new spot ", newBallSpotx, newBallSpoty );
+                    switchStateToHuddle();
+                    return newBallSpotx, newBallSpoty, scored == false;
 
-                    return newBallSpotx, newBallSpoty;
                     });
                   console.log('2');
 
@@ -199,8 +224,9 @@ function passPlayLeft() {
                     newBallSpotx = football.x;
                     newBallSpoty = football.y;
                     console.log("new spot ", newBallSpotx, newBallSpoty);
+                    switchStateToHuddle();
+                    return newBallSpotx, newBallSpoty, scored == false;
 
-                    return newBallSpotx, newBallSpoty;
 
                     });
                   console.log('3');
@@ -214,7 +240,7 @@ function passPlayLeft() {
   }
 
 function passPlayRight() {
-              kickoff();
+              // kickoff();
               var ct = this.game.add.sprite(newBallSpotx, 220, 'ct');
               ct.scale.setTo(0.03);
 
@@ -235,7 +261,7 @@ function passPlayRight() {
               var RGx = ct.x;
               var RGy = ct.y + 20;
               var rg = this.game.add.sprite(RGx, RGy, 'rg');
-              rg.scale.setTo(0.03);
+              rg.scale.setTo(0.02);
               var spriteTextRG = game.add.text(RGx, RGy, 'RG', {
                   font: '9px Press Start 2P'
               });
@@ -244,7 +270,7 @@ function passPlayRight() {
               var RTx = ct.x;
               var RTy = ct.y + 20;
               var rt = this.game.add.sprite(RTx, RTy, 'rt');
-              rt.scale.setTo(0.03);
+              rt.scale.setTo(0.02);
               var spriteTextRT = game.add.text(RTx, RTy, 'RT', {
                   font: '9px Press Start 2P'
               });
@@ -252,7 +278,7 @@ function passPlayRight() {
               var LGx = ct.x;
               var LGy = ct.y - 20;
               var lg = this.game.add.sprite(LGx, LGy, 'lg');
-              lg.scale.setTo(0.03);
+              lg.scale.setTo(0.02);
               var spriteTextLG = game.add.text(LGx, LGy, 'LG', {
                   font: '9px Press Start 2P'
               });
@@ -261,7 +287,7 @@ function passPlayRight() {
               var LTx = ct.x;
               var LTy = ct.y - 20;
               var lt = this.game.add.sprite(LTx, LTy, 'lt');
-              lt.scale.setTo(0.03);
+              lt.scale.setTo(0.02);
               var spriteTextLT = game.add.text(LTx, LTy, 'LT', {
                   font: '9px Press Start 2P'
               });
@@ -422,7 +448,7 @@ function passPlayRight() {
 
 function passPlayMiddle(){
 
-  kickoff();
+  // kickoff();
    var ct = this.game.add.sprite(newBallSpotx, 220, 'ct');
    ct.scale.setTo(0.03);
 
@@ -442,7 +468,7 @@ function passPlayMiddle(){
    var RGx = ct.x;
    var RGy = ct.y + 20;
    var rg = this.game.add.sprite(RGx, RGy, 'rg');
-   rg.scale.setTo(0.03);
+   rg.scale.setTo(0.02);
    var spriteTextRG = game.add.text(RGx, RGy, 'RG', {
        font: '9px Press Start 2P'
    });
@@ -450,7 +476,7 @@ function passPlayMiddle(){
    var RTx = ct.x;
    var RTy = rg.y + 20;
    var rt = this.game.add.sprite(RTx, RTy, 'rt');
-   rt.scale.setTo(0.03);
+   rt.scale.setTo(0.02);
    var spriteTextRT = game.add.text(RTx, RTy, 'RT', {
        font: '9px Press Start 2P'
    });
@@ -459,7 +485,7 @@ function passPlayMiddle(){
    var LGx = ct.x;
    var LGy = ct.y - 20;
    var lg = this.game.add.sprite(LGx, LGy, 'lg');
-   lg.scale.setTo(0.03);
+   lg.scale.setTo(0.02);
    var spriteTextLG = game.add.text(LGx, LGy, 'LG', {
        font: '9px Press Start 2P'
    });
@@ -468,7 +494,7 @@ function passPlayMiddle(){
    var LTx = ct.x;
    var LTy = lg.y - 20;
    var lt = this.game.add.sprite(LTx, LTy, 'lt');
-   lt.scale.setTo(0.03);
+   lt.scale.setTo(0.02);
    var spriteTextLT = game.add.text(LTx, LTy, 'LT', {
        font: '9px Press Start 2P'
    });
@@ -531,9 +557,7 @@ function qbPass() {
 
  oldBallSpot = football.y;
  console.log("old spot = ", oldBallSpot)
- console.log('original line == ', lineOfScrimmage);
  switch (x) {
-
      case 1:
      var tweenFootballA = game.add.tween(football).to({
          x: '+100',
@@ -606,7 +630,7 @@ function runPlayMiddle(){
        var RGx = ct.x;
        var RGy = ct.y + 20;
        var rg = this.game.add.sprite(RGx, RGy, 'rg');
-       rg.scale.setTo(0.03);
+       rg.scale.setTo(0.02);
        var spriteTextRG = game.add.text(RGx, RGy, 'RG', {
            font: '9px Press Start 2P'
        });
@@ -615,7 +639,7 @@ function runPlayMiddle(){
        var RTx = ct.x;
        var RTy = rg.y + 20;
        var rt = this.game.add.sprite(RTx, RTy, 'rt');
-       rt.scale.setTo(0.03);
+       rt.scale.setTo(0.02);
        var spriteTextRT = game.add.text(RTx, RTy, 'RT', {
            font: '9px Press Start 2P'
        });
@@ -623,7 +647,7 @@ function runPlayMiddle(){
        var LGx = ct.x;
        var LGy = ct.y - 20;
        var lg = this.game.add.sprite(LGx, LGy, 'lg');
-       lg.scale.setTo(0.03);
+       lg.scale.setTo(0.02);
        var spriteTextLG = game.add.text(LGx, LGy, 'LG', {
            font: '9px Press Start 2P'
        });
@@ -632,7 +656,7 @@ function runPlayMiddle(){
        var LTx = ct.x;
        var LTy = lg.y - 20;
        var lt = this.game.add.sprite(LTx, LTy, 'lt');
-       lt.scale.setTo(0.03);
+       lt.scale.setTo(0.02);
        var spriteTextLT = game.add.text(LTx, LTy, 'LT', {
            font: '9px Press Start 2P'
        });
@@ -755,7 +779,7 @@ function runPlayLeft (){
       var RGx = ct.x;
       var RGy = ct.y + 20;
       var rg = this.game.add.sprite(RGx, RGy, 'rg');
-      rg.scale.setTo(0.03);
+      rg.scale.setTo(0.02);
       var spriteTextRG = game.add.text(RGx, RGy, 'RG', {
           font: '9px Press Start 2P'
       });
@@ -764,7 +788,7 @@ function runPlayLeft (){
       var RTx = ct.x;
       var RTy = rg.y + 20;
       var rt = this.game.add.sprite(RTx, RTy, 'rt');
-      rt.scale.setTo(0.03);
+      rt.scale.setTo(0.02);
       var spriteTextRT = game.add.text(RTx, RTy, 'RT', {
           font: '9px Press Start 2P'
       });
@@ -772,7 +796,7 @@ function runPlayLeft (){
       var LGx = ct.x;
       var LGy = ct.y - 20;
       var lg = this.game.add.sprite(LGx, LGy, 'lg');
-      lg.scale.setTo(0.03);
+      lg.scale.setTo(0.02);
       var spriteTextLG = game.add.text(LGx, LGy, 'LG', {
           font: '9px Press Start 2P'
       });
@@ -781,7 +805,7 @@ function runPlayLeft (){
       var LTx = ct.x;
       var LTy = lg.y - 20;
       var lt = this.game.add.sprite(LTx, LTy, 'lt');
-      lt.scale.setTo(0.03);
+      lt.scale.setTo(0.02);
       var spriteTextLT = game.add.text(LTx, LTy, 'LT', {
           font: '9px Press Start 2P'
       });
@@ -1007,9 +1031,6 @@ function runPlayRight(){
         var tweenJ = game.add.tween(te2).to({
           x: '+15'
         }, 2000);
-
-
-
         tweenA.start();
         tweenB.start();
         tweenC.start();

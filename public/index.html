@@ -16,8 +16,6 @@
     <script src="src/playbook/defense/defensiveplays.js"></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-
     <link rel="stylesheet" href="main.css">
   </head>
 
@@ -28,17 +26,14 @@
 
 
     <div class="roster">
-<!--
-      <section ui-view> </section> -->
-      <h1>Home: 0
-          Away: 0</h1>
-      <button type="button" onclick="passPlayLeft()"  class="btn btn-info">Pass Left</button>
-      <button type="button" onclick="passPlayMiddle()"  class="btn btn-info">Pass Middle</button>
-      <button type="button" onclick="passPlayRight()"  class="btn btn-info">Pass Right</button>
-      <button type="button" onclick="runPlayLeft()"  class="btn btn-info">Run Left</button>
-      <button type="button" onclick="runPlayMiddle()"  class="btn btn-info">Run Middle</button>
-      <button type="button" onclick="runPlayRight()" class="btn btn-info">Run Right</button>
 
+      <a ui-sref="hello">hellos</a> <br>
+      <a ui-sref="yo">yo</a>  <br>
+      <a ui-sref="about">about</a>  <br>
+      <ui-view> </ui-view><br>
+
+
+    
 
 
   </div>
@@ -60,8 +55,6 @@
 
 
               game.state.add('GameActionState', GameActionState);
-              game.state.add('OffenseInitState', OffenseInitState);
-//game.state.add('HuddleState', HuddleState);
-              game.state.start('OffenseInitState');
+              game.state.start('GameActionState');
 
 </script>

@@ -3,10 +3,31 @@ var myapp = angular.module('myApp', ['ui.router']);
 
 myapp.config(function($stateProvider) {
 
-    $stateProvider.state('test', {
-      template: '<h1> Test </h1>'
+  var helloState = {
+   name: 'hello',
+   url: '/hello',
+   templateUrl :'src/partials/rosters.html'
+ }
 
-    })
+
+ var aboutState = {
+   name: 'about',
+   url: '/about',
+   template: '<h1> about </h1>'
+ }
+
+
+  var yoState = {
+    name: 'yo',
+    url: '/yo',
+    template: '<h1> YO! </h1>'
+  }
+
+ $stateProvider.state(helloState);
+ $stateProvider.state(aboutState);
+ $stateProvider.state(yoState);
+
+
 //end brackets
 });
 

@@ -50,7 +50,7 @@ var HuddleState  = {
           // DownLog = game.add.text(650, 0,  game.down + ' & 10 ',{font: '20px Press Start 2p', fill: '#ffffff' });
 
 
-          breakHuddle = game.add.text(500, 400, "BREAK!!", {font: '24px Press Start 2p', fill: '#ffffff'});
+          breakHuddle = game.add.text(430, 400, "BREAK!!", {font: '24px Press Start 2p', fill: '#ffffff'});
           breakHuddle.inputEnabled = true;
           breakHuddle.events.onInputDown.add(switchStateToGameAction, this);
 
