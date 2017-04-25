@@ -1,26 +1,45 @@
 body{
   font-family: "Press Start 2P", cursive;
-  background: white;
+  background: black;
   color: steelblue;
   overflow: hidden;
 
 }
 
 a {
-  font-size: 24px;
+  font-size: 18px;
 }
 .roster{
   margin-left: 810px;
-  margin-top: 150px;
+  margin-top: 50px;
   height: 1000px;
   width: 600px;
   position: absolute;
   font-size: 8px;
+  border: 3px gold;
 }
 
-tr{
-  padding: 2px;
+.uimenu{
+  text-align: center;
+
 }
+
+
+li {
+  font-size: 14px;
+  list-style-type: none;
+}
+
+td{
+  font-size: 14px;
+}
+
+.gamestatsTable tr{
+  font-size: 14px;
+}
+
+
+
 
 .canvas{
   clear: right;
@@ -30,5 +49,10 @@ tr{
 }
 
 h1{
+  text-align: center;
+}
+
+
+.title {
   text-align: center;
 }
