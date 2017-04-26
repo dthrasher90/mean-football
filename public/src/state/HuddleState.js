@@ -20,11 +20,11 @@ var HuddleState  = {
             game.load.image('wr3', 'reddot.png');
             game.load.image('wr4', 'reddot.png');
             game.load.image('qb', 'reddot.png');
-            game.load.image('lt', 'reddot.png');
-            game.load.image('lg', 'reddot.png');
-            game.load.image('ct', 'reddot.png');
-            game.load.image('rg', 'reddot.png');
-            game.load.image('rt', 'reddot.png');
+            game.load.image('lt', 'bluedot.png');
+            game.load.image('lg', 'bluedot.png');
+            game.load.image('ct', 'bluedot.png');
+            game.load.image('rg', 'bluedot.png');
+            game.load.image('rt', 'bluedot.png');
             game.load.image('football','football.png');
 
           },
@@ -49,10 +49,10 @@ var HuddleState  = {
           // Time = this.game.add.text(310, 0, 'Time: 00:00', {font: '20px Press Start 2P', fill: '#ffffff' });
           // DownLog = game.add.text(650, 0,  game.down + ' & 10 ',{font: '20px Press Start 2p', fill: '#ffffff' });
 
-
-          breakHuddle = game.add.text(430, 400, "BREAK!!", {font: '24px Press Start 2p', fill: '#ffffff'});
-          breakHuddle.inputEnabled = true;
-          breakHuddle.events.onInputDown.add(switchStateToGameAction, this);
+          //
+          // breakHuddle = game.add.text(430, 400, "BREAK!!", {font: '24px Press Start 2p', fill: '#ffffff'});
+          // breakHuddle.inputEnabled = true;
+          // breakHuddle.events.onInputDown.add(switchStateToGameAction, this);
 
           // checkdown(game);
 
