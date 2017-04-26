@@ -46,11 +46,12 @@
 
             var wr1, wr2, wr3, wr4, football, yards, passing;
             var scoreTextHome, scoreTextAway, Time, GameLog, DownLog;
-            var newBallSpot, oldBallSpot;
+            var newBallSpot, oldBallSpot
 
             var game = new Phaser.Game(800, 500, Phaser.AUTO);
                 game.state.add('GameActionState', GameActionState);
 
+              game.ballspot;
 
               game.state.add('GameActionState', GameActionState);
               game.state.start('GameActionState');
