@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>MEAN FOOTBALL</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="angular.js"></script>
     <!-- <script scr="angular-ui-router.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
@@ -10,37 +11,72 @@
     <script src="phaser.js">  </script>
     <script src="src/state/GameActionState.js"></script>
     <script src="src/state/OffenseInitState.js"></script>
+    <script src="src/assets/scripts/gamefunctions.js"></script>
+    <script src="src/assets/scripts/gameLogScripts.js"></script>
     <script src="src/state/HuddleState.js"></script>
     <script src="src/controller/gamecontroller.js"> </script>
-    <script src="src/playbook/offense/yo.js"></script>
+    <script src="src/playbook/offense/passPlays.js"></script>
+    <script src="src/playbook/offense/runPlays.js"></script>
     <script src="src/playbook/defense/defensiveplays.js"></script>
+
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="main.css">
   </head>
 
 
-  <body ng-controller="myCtrl">
+<body ng-controller="myCtrl">
+
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+              <div id="gamecanvas"> </div>
+              <div class="scoreBoard">
+              <p> Home:  </p>  <p class="gametime"> Time:</p> <p class="gamequarter"> QTR: 1</p>
+               <p id="counter">15:00</p>
+              <p class="awayScore"> Away:  </p>
 
 
 
-  <div class="roster">
-    <div class= "btn-group uimenu " role="group">
-      <a class="btn btn-info" ui-sref="playbook">playbook</a>
-      <a class="btn btn-info" ui-sref="coach">coach </a>
-      <a class="btn btn-info"ui-sref="depthchart">depth chart</a>
-      <a class="btn btn-info"ui-sref="gamestat">game stats</a>
+
+              </div>
+
+            <div class= "gameLogWrapper">
+                  <h3> Game Log</h3>
+              <div id="gameLog">
+
+
+
+              </div>
+            </div>
+
+
+        </div>
+        <div class="col-md-6">
+          <div class="gameController">
+              <div class="btn-group uimenu " role="group">
+                  <a class="btn btn-info" ui-sref="playbook">playbook</a>
+                  <a class="btn btn-info" ui-sref="coach">coach </a>
+                  <a class="btn btn-info" ui-sref="depthchart">depth chart</a>
+                  <a class="btn btn-info" ui-sref="gamestat">game stats</a>
+                  <ui-view> </ui-view>
+
+
+              </div>
+            <button class="btn btn-info" onclick="countdown()">countdown</button>
+            <button class="btn btn-info" onclick="rushingScripts()">array test</button>
+
+          </div>
+        </div>
     </div>
-
-      <ui-view> </ui-view>
-
   </div>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  </body>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</body>
 </html>
 
 <script type="text/javascript">
-
 
 
 
@@ -48,7 +84,7 @@
             var scoreTextHome, scoreTextAway, Time, GameLog, DownLog;
             var newBallSpot, oldBallSpot
 
-            var game = new Phaser.Game(800, 500, Phaser.AUTO);
+            var game = new Phaser.Game(800, 400, Phaser.AUTO, 'gamecanvas');
                 game.state.add('GameActionState', GameActionState);
 
               game.ballspot;

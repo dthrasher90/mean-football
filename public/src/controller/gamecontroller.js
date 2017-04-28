@@ -3,19 +3,17 @@ var myapp = angular.module('myApp', ['ui.router']);
 
 myapp.config(function($stateProvider) {
 
-  var playbookState = {
-   name: 'playbook',
-   url: '/playbook',
-   templateUrl :'src/partials/playbook.html'
- }
+    var playbookState = {
+     name: 'playbook',
+     url: '/playbook',
+     templateUrl :'src/partials/playbook.html'
+   }
 
-
- var coachState = {
-   name: 'coach',
-   url: '/coach',
-   templateUrl: 'src/partials/coach.html'
- }
-
+   var coachState = {
+     name: 'coach',
+     url: '/coach',
+     templateUrl: 'src/partials/coach.html'
+   }
 
   var rosterState = {
     name: 'depthchart',
@@ -29,16 +27,21 @@ myapp.config(function($stateProvider) {
     templateUrl: 'src/partials/gamestats.html'
   }
 
+
+
  $stateProvider.state(playbookState);
  $stateProvider.state(coachState);
  $stateProvider.state(rosterState);
  $stateProvider.state(gamestatState);
 
 
+
 //end brackets
 });
 
 myapp.controller('myCtrl', ['$scope', function ($scope){
+
+
 
 
 
@@ -77,7 +80,9 @@ myapp.controller('rosterCtrl', ['$scope', function ($scope){
 
 
 
+
 myapp.controller('gamestatsCtrl', ['$scope', function ($scope){
+
 
 
 

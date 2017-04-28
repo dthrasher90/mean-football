@@ -1,10 +1,16 @@
-<div class="depthchart" ng-controller="rosterCtrl">
-<h1> Roster </h1>
+<div class="row">
+    <div class="col-md-12">
+        <div class="depthchart" ng-controller="rosterCtrl">
+            <h1> Roster </h1>
 
-<ul>
-  <li ng-repeat = "player in players">
-  {{player.position}}   {{player.name}} {{player.stamina}}
-  </li>
-</ul>
-
+            <table class="depthChartTable">
+                <th>Position</th>
+                <th>Name</th>
+                <tr ng-repeat="player in players">
+                    <td>{{player.position}}</td>
+                    <td>{{player.name}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </div>
