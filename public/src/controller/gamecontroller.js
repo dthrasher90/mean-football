@@ -51,6 +51,7 @@ myapp.controller('myCtrl', ['$scope', function ($scope){
 
 myapp.controller('rosterCtrl', ['$scope', function ($scope){
 
+
   $scope.players = [
     {
       name : "F. Dixon",
@@ -81,8 +82,12 @@ myapp.controller('rosterCtrl', ['$scope', function ($scope){
 
 
 
-myapp.controller('gamestatsCtrl', ['$scope', function ($scope){
+myapp.controller('gamestatsCtrl', ['$scope',  function ($scope){
 
+  $scope.playCount = playCount;
+  $scope.wr1Yards = wr1Yards;
+  $scope.wr2Yards = wr2Yards;
+  $scope.wr3Yards = wr3Yards;
 
 
 

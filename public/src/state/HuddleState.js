@@ -32,31 +32,12 @@ var HuddleState  = {
           create:  function(){
 
           console.log("in HuddleState");
-          nextDown();
+
 
           var field = this.game.add.button(15, 50, 'field');
               field.scale.setTo(1.1);
               field.anchor.setTo(0);
 // =========================SCOREBOARD CREATED====================================================================
-          var scoreTextHome, scoreTextAway, Time, GameLog, DownLog, down;
-          var homeScore= 0;
-          var awayScore =0;
-
-          console.log("down === ", game.down);
-
-          // scoreTextHome = this.add.text(0.1, 0, 'Home: '+ homeScore, {font: '20px Press Start 2P',fill: '#ffffff' });
-          // scoreTextAway = game.add.text(0.1, 21, 'Away: ' + awayScore, {font: '20px Press Start 2P', fill: '#ffffff' });
-          // Time = this.game.add.text(310, 0, 'Time: 00:00', {font: '20px Press Start 2P', fill: '#ffffff' });
-          // DownLog = game.add.text(650, 0,  game.down + ' & 10 ',{font: '20px Press Start 2p', fill: '#ffffff' });
-
-          //
-          // breakHuddle = game.add.text(430, 400, "BREAK!!", {font: '24px Press Start 2p', fill: '#ffffff'});
-          // breakHuddle.inputEnabled = true;
-          // breakHuddle.events.onInputDown.add(switchStateToGameAction, this);
-
-          // checkdown(game);
-
-
 
 function switchStateToGameAction(){
     game.state.add('GameActionState', GameActionState);

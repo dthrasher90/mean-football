@@ -1,17 +1,16 @@
 
 var ifScored;
 var playCount = 0;
+var qbPassYards = 0;
+var wr1Yards = 0;
+var wr2Yards = 0;
+var wr3Yards = 0;
+var wr1RecYards =0;
+var wr2RecYards=0;
+var wr3RecYards=0;
+var playCount =0;
 
 
-function kickoff(){
-  newBallSpotx=210;
-  return newBallSpotx;
-
-}
-
-//
-// var ballPosition = {x: 0, y: 0} // x, y
-// .x = 1
 
 
 
@@ -165,12 +164,12 @@ function passPlayLeft() {
       qbPass();
       function qbPass(playCount) {
         //pass play left
-
-          oldBallSpot = football.y;
+          var yards = 0;
+          oldBallSpotx = football.x;
           console.log("old spot ", oldBallSpot);
 
 
-          var x =   Math.floor((Math.random() * 3) + 1);
+          var x =  Math.floor((Math.random() * 3) + 1);
           console.log(x);
           switch (x) {
 
@@ -184,10 +183,27 @@ function passPlayLeft() {
                   tweenFootballA.onComplete.add(function newlocation (newBallSpot){
 
 
+
                     newBallSpotx = football.x;
                     newBallSpoty = football.y;
-                    console.log("new spot ", newBallSpotx, newBallSpoty);
-                    setTimeout(switchStateToHuddle,3000);
+
+                    var x1 = +newBallSpotx;
+
+                    var x2 = +oldBallSpotx;
+                    var yards = +yards;
+
+                    yards = (x1 -x2)/5.2;
+
+                    wr1RecYards = wr1RecYards + yards;
+
+                    wr1Yards = wr1RecYards.toFixed(0);
+
+                    console.log("wr1 stats =  ", wr1Yards);
+
+                    console.log(newBallSpotx, oldBallSpotx, yards);
+
+
+                     setTimeout(switchStateToHuddle,1500);
                     return newBallSpotx, newBallSpoty, playCount
 
 
@@ -209,7 +225,23 @@ function passPlayLeft() {
                     newBallSpotx = football.x;
                     newBallSpoty = football.y;
                     console.log("new spot ", newBallSpotx, newBallSpoty );
-                  setTimeout(switchStateToHuddle,3000);
+
+                    var x1 = +newBallSpotx;
+
+                    var x2 = +oldBallSpotx;
+                    var yards = +yards;
+
+                    yards = (x1 -x2)/5.2;
+
+                    wr2RecYards = wr2RecYards + yards;
+
+                    wr2Yards = wr2RecYards.toFixed(0);
+
+                    console.log("wr2 stats =  ", wr2Yards);
+
+                    console.log(newBallSpotx, oldBallSpotx, yards);
+                    setTimeout(switchStateToHuddle,3000);
+
                     return newBallSpotx, newBallSpoty, playCount
 
                     });
@@ -229,6 +261,19 @@ function passPlayLeft() {
                     newBallSpoty = football.y;
                     console.log("new spot ", newBallSpotx, newBallSpoty);
                     setTimeout(switchStateToHuddle,3000);
+
+                    var x1 = +newBallSpotx;
+
+                    var x2 = +oldBallSpotx;
+                    var yards = +yards;
+
+                    yards = (x1 -x2)/5.2;
+
+                    wr3RecYards = wr3RecYards + yards;
+
+                    wr3Yards = wr3RecYards.toFixed(0);
+
+                    console.log("wr3 stats =  ", wr3Yards);
                     return newBallSpotx, newBallSpoty, playCount;
 
 
@@ -394,7 +439,7 @@ function passPlayRight() {
 
                 //pass play right
 
-                  oldBallSpot = football.y;
+                  oldBallSpotx = football.x;
                   console.log("old spot ", oldBallSpot);
                   var x =  Math.floor((Math.random() * 3) + 1);
                   console.log(x);
@@ -413,6 +458,23 @@ function passPlayRight() {
                             newBallSpotx = football.x;
                             newBallSpoty = football.y;
                             console.log("new spot ", newBallSpotx, newBallSpoty);
+
+                            var x1 = +newBallSpotx;
+
+                            var x2 = +oldBallSpotx;
+                            var yards = +yards;
+
+                            yards = (x1 -x2)/5.2;
+
+                            wr1RecYards = wr1RecYards + yards;
+
+                            wr1Yards = wr1RecYards.toFixed(0);
+
+                            console.log("wr1 stats =  ", wr1Yards);
+
+                            console.log(newBallSpotx, oldBallSpotx, yards);
+
+
                             setTimeout(switchStateToHuddle,3000);
                             return newBallSpotx, newBallSpoty, playCount;
                             });
@@ -430,6 +492,20 @@ function passPlayRight() {
                                 newBallSpotx = football.x;
                                 newBallSpoty = football.y;
                                 console.log("new spot ", newBallSpotx, newBallSpoty);
+
+                                var x1 = +newBallSpotx;
+
+                                var x2 = +oldBallSpotx;
+                                var yards = +yards;
+
+                                yards = (x1 -x2)/5.2;
+
+                                wr2RecYards = wr2RecYards + yards;
+
+                                wr2Yards = wr2RecYards.toFixed(0);
+
+                                console.log("wr2 stats =  ", wr2Yards);
+
                                  setTimeout(switchStateToHuddle,3000);
                                 return newBallSpotx, newBallSpoty, playCount;
                             });
@@ -449,6 +525,19 @@ function passPlayRight() {
                                 newBallSpotx = football.x;
                                 newBallSpoty = football.y;
                                 console.log("new spot ", newBallSpotx, newBallSpoty);
+
+                                var x1 = +newBallSpotx;
+
+                                var x2 = +oldBallSpotx;
+                                var yards = +yards;
+
+                                yards = (x1 -x2)/5.2;
+
+                                wr3RecYards = wr3RecYards + yards;
+
+                                wr3Yards = wr3RecYards.toFixed(0);
+
+                                console.log("wr3 stats =  ", wr3Yards);
                                  setTimeout(switchStateToHuddle,3000);
                                 return newBallSpotx, newBallSpoty, playCount
                             });
@@ -583,8 +672,8 @@ function passPlayMiddle(){
            var x =   Math.floor((Math.random() * 3) + 1);
            console.log(x);
 
-           oldBallSpot = football.y;
-           console.log("old spot = ", oldBallSpot)
+           oldBallSpotx = football.x;
+           console.log("old spot = ", oldBallSpot);
            switch (x) {
                case 1:
                var tweenFootballA = game.add.tween(football).to({
@@ -597,7 +686,23 @@ function passPlayMiddle(){
                      newBallSpotx = football.x;
                      newBallSpoty = football.y;
                      console.log("new spot ", newBallSpotx, newBallSpoty);
-                   setTimeout(switchStateToHuddle,3000);
+                     var x1 = +newBallSpotx;
+
+                     var x2 = +oldBallSpotx;
+                     var yards = +yards;
+
+                     yards = (x1 -x2)/5.2;
+
+                     wr1RecYards = wr1RecYards + yards;
+
+                     wr1Yards = wr1RecYards.toFixed(0);
+
+                     console.log("wr1 stats =  ", wr1Yards);
+
+                     console.log(newBallSpotx, oldBallSpotx, yards);
+
+
+                     setTimeout(switchStateToHuddle,3000);
                      return newBallSpotx, newBallSpoty, playCount;
                    });
                    console.log('1');
@@ -615,6 +720,20 @@ function passPlayMiddle(){
                      newBallSpotx = football.x;
                      newBallSpoty = football.y;
                      console.log("new spot ", newBallSpotx, newBallSpoty);
+
+                     var x1 = +newBallSpotx;
+
+                     var x2 = +oldBallSpotx;
+                     var yards = +yards;
+
+                     yards = (x1 -x2)/5.2;
+
+                     wr2RecYards = wr2RecYards + yards;
+
+                     wr2Yards = wr2RecYards.toFixed(0);
+
+                     console.log("wr2 stats =  ", wr2Yards);
+
                    setTimeout(switchStateToHuddle,3000);
                      return newBallSpotx, newBallSpoty, playCount;
                        });
@@ -631,7 +750,21 @@ function passPlayMiddle(){
                      newBallSpotx = football.x;
                      newBallSpoty = football.y;
                      console.log("new spot ", newBallSpotx, newBallSpoty);
-                  setTimeout(switchStateToHuddle,3000);
+
+                     var x1 = +newBallSpotx;
+
+                     var x2 = +oldBallSpotx;
+                     var yards = +yards;
+
+                     yards = (x1 -x2)/5.2;
+
+                     wr3RecYards = wr3RecYards + yards;
+
+                     wr3Yards = wr3RecYards.toFixed(0);
+
+                     console.log("wr3 stats =  ", wr3Yards);
+
+                     setTimeout(switchStateToHuddle,3000);
                      return newBallSpotx, newBallSpoty, playCount;
                        });
                    console.log('3');

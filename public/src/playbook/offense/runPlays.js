@@ -1,4 +1,4 @@
-alert('run plays js');
+
 
 function runPlayMiddle(){
 
