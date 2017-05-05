@@ -41,12 +41,9 @@ var GameActionState  = {
 
 
 //================================HUD Graphics ===============================================================
-  create: function(wr1, football, ct, newBallSpotx){
+  create: function(qb, wr1, wr2, wr3, ct, rg, rt, lg, lt, football){
 
-          game.physics.startSystem(Phaser.Physics.ARCADE);
 
-          console.log("in Game Action State");
-          // console.log("GAS new spotws ==  ", newBallSpotx, newBallSpoty);
 
           var field = game.add.sprite(15, 50, 'field');
               field.scale.setTo(1.1);
@@ -58,16 +55,20 @@ var GameActionState  = {
               game.state.start('HuddleState');
               }
 
+
 //end of create brackets -------------
 },
 
 //============================GameButtons===========================================================
 
 
+    update: function(wr3, wr1){
 
 
-    update: function(){
 
 
-    },
-  };
+//end update brackt
+},
+
+
+};

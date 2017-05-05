@@ -8,36 +8,51 @@
     <!-- <script scr="angular-ui-router.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
 
-    <script src="phaser.js">  </script>
+    <script src="phaser2.js">  </script>
+    <script src="src/state/bootState.js"></script>
+
     <script src="src/state/GameActionState.js"></script>
     <script src="src/state/OffenseInitState.js"></script>
     <script src="src/assets/scripts/gamefunctions.js"></script>
-    <script src="src/assets/scripts/gameLogScripts.js"></script>
     <script src="src/state/HuddleState.js"></script>
     <script src="src/controller/gamecontroller.js"> </script>
     <script src="src/playbook/offense/passPlays.js"></script>
     <script src="src/playbook/offense/runPlays.js"></script>
     <script src="src/playbook/defense/defensiveplays.js"></script>
+    <script src="src/assets/scripts/gameLogScripts.js"></script>
 
+    <script src="phaser-track.js">  </script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="main.css">
   </head>
 
 
-<body ng-controller="myCtrl">
+<body ng-controller="mainCtrl">
 
   <div class="container-fluid">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6" >
               <div id="gamecanvas"> </div>
               <div class="scoreBoard">
-              <p> Home:  </p>  <p class="gametime"> Time:</p> <p class="gamequarter"> QTR: 1</p>
-               <p id="counter">15:00</p>
-              <p class="awayScore"> Away:  </p>
+                    <p class= "homeScore">Home:</p> <p id="home"> </p>
+                    <p class="gametime"> Time:</p>
+                    <p class="gamequarter"> QTR: 1</p>
+                    <p id="counter">15:00</p>
+                    <p class="awayScore"> Away: </p> <p id="away">  </p>
+                    <p id="currentDownDisplay"> </p>
+                   <!-- <p id= "yardsRemaining">11 </p> -->
               </div>
+              <button class="btn btn-info" onclick="homeTD()">home td</button>
+              <button class="btn btn-info" onclick="homeFG()">home fg</button>
+              <button class="btn btn-info" onclick="awayTD()">awaytd</button>
+              <button class="btn btn-info" onclick="awayFG()">away fg</button>
+              <button class="btn btn-info" onclick="physicsTest()">phsyics test</button>
+
+
 
             <div class= "gameLogWrapper">
+
                   <h3> Game Log</h3>
               <div id="gameLog">
               </div>
@@ -58,6 +73,8 @@
               </div>
             <button class="btn btn-info" onclick="countdown()">countdown</button>
             <button class="btn btn-info" onclick="rushingScripts()">array test</button>
+            <button class="btn btn-info" onclick="downChecker()">down test</button>
+
 
           </div>
         </div>
@@ -72,17 +89,10 @@
 <script type="text/javascript">
 
 
-
-            var wr1, wr2, wr3, wr4, football, yards, passing;
-            var scoreTextHome, scoreTextAway, Time, GameLog, DownLog;
-            var newBallSpot, oldBallSpot
-
+            var oldBallSpot
             var game = new Phaser.Game(800, 400, Phaser.AUTO, 'gamecanvas');
                 game.state.add('GameActionState', GameActionState);
-
-              game.ballspot;
-
-              game.state.add('GameActionState', GameActionState);
-              game.state.start('GameActionState');
+                game.state.add('bootState', bootState);
+                game.state.start('bootState');
 
 </script>

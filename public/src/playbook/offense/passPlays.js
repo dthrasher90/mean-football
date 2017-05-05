@@ -8,7 +8,6 @@ var wr3Yards = 0;
 var wr1RecYards =0;
 var wr2RecYards=0;
 var wr3RecYards=0;
-var playCount =0;
 
 
 
@@ -18,6 +17,7 @@ function switchStateToHuddle(){
     game.state.add('HuddleState', HuddleState);
     game.state.start('HuddleState');
 }
+
 
 function passPlayLeft() {
 
@@ -38,11 +38,11 @@ function passPlayLeft() {
         ct.scale.setTo(0.03);
       }
 
-
       var QBx = ct.x - 20;
       var QBy = ct.y;
       var qb = this.game.add.sprite(QBx, QBy, 'qb');
       qb.scale.setTo(0.02);
+      console.log('qb - ', game);
 
       var RB1x = ct.x -70;
       var RB1y = ct.y;
@@ -112,6 +112,15 @@ function passPlayLeft() {
           font: '9px Press Start 2P'
       });
 
+      var DT1x= ct.x - 100;
+      var DT1y = ct.y + 100;
+      var dt1 = this.game.add.sprite(DT1x, DT1y, 'dt1');
+      dt1.scale.setTo(0.05);
+      var spriteTextDT1 = game.add.text(DT1x, DT1y, 'dt1', {
+          font: '9px Press Start 2P'
+      });
+
+
 
       var football = this.game.add.sprite(ct.x, ct.y, 'football');
             football.scale.setTo(0.08);
@@ -159,8 +168,10 @@ function passPlayLeft() {
       tweenG.start();
       tweenH.start();
 
+
       // Base43Defense(passPlayLeft, ct);
-      game.physics.arcade.enable([qb, wr1, wr2, wr3, ct, rg, rt, lg, lt]);
+      // game.physics.arcade.enable([qb, wr1, wr2, wr3, ct, rg, rt, lg, lt, dt1]);
+
       qbPass();
       function qbPass(playCount) {
         //pass play left
@@ -169,7 +180,7 @@ function passPlayLeft() {
           console.log("old spot ", oldBallSpot);
 
 
-          var x =  Math.floor((Math.random() * 3) + 1);
+          var x = Math.floor((Math.random() * 3) + 1);
           console.log(x);
           switch (x) {
 
@@ -202,7 +213,10 @@ function passPlayLeft() {
 
                     console.log(newBallSpotx, oldBallSpotx, yards);
 
-
+                    if(football.x >720){
+                      console.log("crossed mid field");
+                      homeTD();
+                    }
                      setTimeout(switchStateToHuddle,1500);
                     return newBallSpotx, newBallSpoty, playCount
 
@@ -239,8 +253,13 @@ function passPlayLeft() {
 
                     console.log("wr2 stats =  ", wr2Yards);
 
+                    if(football.x >720){
+                      console.log("crossed mid field");
+                      homeTD();
+                    }
+
                     console.log(newBallSpotx, oldBallSpotx, yards);
-                    setTimeout(switchStateToHuddle,3000);
+                    setTimeout(switchStateToHuddle,1500);
 
                     return newBallSpotx, newBallSpoty, playCount
 
@@ -260,7 +279,7 @@ function passPlayLeft() {
                     newBallSpotx = football.x;
                     newBallSpoty = football.y;
                     console.log("new spot ", newBallSpotx, newBallSpoty);
-                    setTimeout(switchStateToHuddle,3000);
+                    setTimeout(switchStateToHuddle,1500);
 
                     var x1 = +newBallSpotx;
 
@@ -273,8 +292,16 @@ function passPlayLeft() {
 
                     wr3Yards = wr3RecYards.toFixed(0);
 
+                    if(football.x >720){
+                      console.log("crossed mid field");
+                      homeTD();
+                    }
+
                     console.log("wr3 stats =  ", wr3Yards);
                     return newBallSpotx, newBallSpoty, playCount;
+
+
+
 
 
                     });
@@ -361,6 +388,9 @@ function passPlayRight() {
                   font: '9px Press Start 2P'
               });
 
+              wr1.body.velocity.setTo(200, 200);
+
+
 
               var WR2x = ct.x - 20;
               var WR2y = ct.y + 50;
@@ -382,7 +412,7 @@ function passPlayRight() {
               var football = this.game.add.sprite(ct.x, ct.y, 'football');
               football.scale.setTo(0.08);
 
-              game.physics.arcade.enable([qb, wr1, wr2, wr3, ct, rg, rt, lg, lt, football]);
+              // game.physics.arcade.enable([qb, wr1, wr2, wr3, ct, rg, rt, lg, lt, football]);
 
               var tweenA = game.add.tween(wr1).to({
                   x: '+200'

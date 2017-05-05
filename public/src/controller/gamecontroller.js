@@ -1,6 +1,7 @@
 
 var myapp = angular.module('myApp', ['ui.router']);
 
+
 myapp.config(function($stateProvider) {
 
     var playbookState = {
@@ -39,9 +40,21 @@ myapp.config(function($stateProvider) {
 //end brackets
 });
 
-myapp.controller('myCtrl', ['$scope', function ($scope){
+
+myapp.factory('MyService', function () {
+  return {
+    sayHello: function () {
+      console.log('hello');
+    }
+  }
+});
 
 
+myapp.controller('mainCtrl', ['$scope', function ($scope){
+
+
+  $scope.home = home;
+  $scope.awayScore = awayScore;
 
 
 
@@ -80,15 +93,15 @@ myapp.controller('rosterCtrl', ['$scope', function ($scope){
 
 
 
-
+// var test = {
+//   playCount: 0;
+// }
 
 myapp.controller('gamestatsCtrl', ['$scope',  function ($scope){
 
-  $scope.playCount = playCount;
   $scope.wr1Yards = wr1Yards;
   $scope.wr2Yards = wr2Yards;
   $scope.wr3Yards = wr3Yards;
-
 
 
 }]);

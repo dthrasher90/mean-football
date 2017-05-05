@@ -101,6 +101,8 @@ function runPlayMiddle(){
            font: '9px Press Start 2P'
        });
 
+  
+
        var football = this.game.add.sprite(ct.x, ct.y, 'football');
              football.scale.setTo(0.08);
 
