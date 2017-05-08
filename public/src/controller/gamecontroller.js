@@ -53,10 +53,6 @@ myapp.factory('MyService', function () {
 myapp.controller('mainCtrl', ['$scope', function ($scope){
 
 
-  $scope.home = home;
-  $scope.awayScore = awayScore;
-
-
 
 
 }]);

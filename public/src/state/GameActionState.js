@@ -1,6 +1,6 @@
 function yo(){
 
-  console.log("hi from game action");
+  console.log("hi from game action state left to right");
 }
 
 
@@ -41,19 +41,28 @@ var GameActionState  = {
 
 
 //================================HUD Graphics ===============================================================
-  create: function(qb, wr1, wr2, wr3, ct, rg, rt, lg, lt, football){
+  create: function(qb, rb1, wr1, wr2, wr3, ct, rg, rt, lg, lt, football){
 
-
+          game.world.setBounds();
 
           var field = game.add.sprite(15, 50, 'field');
               field.scale.setTo(1.1);
               field.anchor.setTo(0);
 
-
-              function switchStateToCoachScreen(){
+          function switchStateToCoachScreen(){
               game.state.add('HuddleState', HuddleState);
               game.state.start('HuddleState');
               }
+
+
+
+
+
+
+
+
+
+
 
 
 //end of create brackets -------------

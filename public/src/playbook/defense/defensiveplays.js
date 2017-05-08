@@ -8,7 +8,25 @@ function hi(){
 
 
 // =====================================4-3 Base Defense==================================================================
-      function Base43Defense(passPlayLeft, ct){
+      function Base43Defense(ct){
+
+
+              playCount = +playCount;
+              playCount += 1;
+              game.physics.arcade.enable( [ ct, cb1, cb2, de1, de2, dt1, dt2, ss, fs, mlb, slb, wlb] );
+
+              console.log("playcount = ", playCount);
+
+              if(playCount == 1){
+
+                var ct.x = 220;
+
+              } else{
+
+                ct.x = newBallSpotx;
+              }
+
+                  console.log("defense ct=", ct.x)
                   var DT1x = ct.x + 40;
                   var DT1y = ct.y + 10;
                   var dt1= game.add.sprite(DT1x, DT1y, 'dt1');
@@ -90,6 +108,5 @@ function hi(){
                  var spriteTextWLB = game.add.text(WLBx, WLBy, 'WLB', {font:  '9px Press Start 2p'});
                             spriteTextWLB.anchor.setTo(-0.3, -0.3);
 
-                game.physics.arcade.enable( [ ct, cb1, cb2, de1, de2, dt1, dt2, ss, fs, mlb, slb, wlb] );
 
                 }

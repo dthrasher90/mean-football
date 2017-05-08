@@ -12,6 +12,7 @@
     <script src="src/state/bootState.js"></script>
 
     <script src="src/state/GameActionState.js"></script>
+    <script src="src/state/actionRtoL.js"></script>
     <script src="src/state/OffenseInitState.js"></script>
     <script src="src/assets/scripts/gamefunctions.js"></script>
     <script src="src/state/HuddleState.js"></script>
@@ -74,6 +75,7 @@
             <button class="btn btn-info" onclick="countdown()">countdown</button>
             <button class="btn btn-info" onclick="rushingScripts()">array test</button>
             <button class="btn btn-info" onclick="downChecker()">down test</button>
+            <button class="btn btn-info" onclick="stateChanger()">state test</button>
 
 
           </div>
@@ -92,7 +94,14 @@
             var oldBallSpot
             var game = new Phaser.Game(800, 400, Phaser.AUTO, 'gamecanvas');
                 game.state.add('GameActionState', GameActionState);
+                game.state.add('actionRtoL', actionRtoL);
                 game.state.add('bootState', bootState);
                 game.state.start('bootState');
+                yoltor();
+
+      function stateChanger(){
+          game.state.add('actionRtoL', actionRtoL);
+          game.state.start('actionRtoL');
+      }
 
 </script>

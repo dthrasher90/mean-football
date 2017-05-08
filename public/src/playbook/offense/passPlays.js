@@ -111,14 +111,14 @@ function passPlayLeft() {
       var spriteTextWR3 = game.add.text(WR3x, WR3y, 'WR3', {
           font: '9px Press Start 2P'
       });
-
-      var DT1x= ct.x - 100;
-      var DT1y = ct.y + 100;
-      var dt1 = this.game.add.sprite(DT1x, DT1y, 'dt1');
-      dt1.scale.setTo(0.05);
-      var spriteTextDT1 = game.add.text(DT1x, DT1y, 'dt1', {
-          font: '9px Press Start 2P'
-      });
+      //
+      // var DT1x= ct.x - 100;
+      // var DT1y = ct.y + 100;
+      // var dt1 = this.game.add.sprite(DT1x, DT1y, 'dt1');
+      // dt1.scale.setTo(0.05);
+      // var spriteTextDT1 = game.add.text(DT1x, DT1y, 'dt1', {
+      //     font: '9px Press Start 2P'
+      // });
 
 
 
@@ -126,14 +126,14 @@ function passPlayLeft() {
             football.scale.setTo(0.08);
 
       var tweenA = game.add.tween(wr1).to({
-          x: '+200'
-      }, 1700);
+          x: '+50'
+      }, 700);
       var tweenB = game.add.tween(wr2).to({
-          x: '+200'
-      }, 1500);
+          x: '+50'
+      }, 700);
       var tweenC = game.add.tween(wr3).to({
-          x: '+100'
-      }, 1000);
+          x: '+50'
+      }, 700);
 
       var tweenCA = game.add.tween(wr3).to({
           y: '-30'
@@ -169,8 +169,8 @@ function passPlayLeft() {
       tweenH.start();
 
 
-      // Base43Defense(passPlayLeft, ct);
-      // game.physics.arcade.enable([qb, wr1, wr2, wr3, ct, rg, rt, lg, lt, dt1]);
+      // Base43Defense();
+      // game.physics.arcade.moveToXY(dt1, 100, 100);
 
       qbPass();
       function qbPass(playCount) {
@@ -178,7 +178,7 @@ function passPlayLeft() {
           var yards = 0;
           oldBallSpotx = football.x;
           console.log("old spot ", oldBallSpot);
-
+          console.log('wr1 = ',  wr1);
 
           var x = Math.floor((Math.random() * 3) + 1);
           console.log(x);
