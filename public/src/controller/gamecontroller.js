@@ -53,6 +53,7 @@ myapp.factory('MyService', function () {
 myapp.controller('mainCtrl', ['$scope', function ($scope){
 
 
+$scope.yardsToGo = yardsToGo;
 
 
 }]);

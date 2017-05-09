@@ -8,21 +8,11 @@ var fg = 3;
 var down = 1;
 var yardsToGo = 10;
 var currentDown = 1;
+var remaining = 6;
+var rushYardsGained = 0;
+var rushingYards;
 
 
-
-function rushingScripts(){
-    var i = Math.floor((Math.random() * 3));
-    var rushingScript = new Array();
-          rushingScript[0] = "RB1 rushes to the left for 5 yards";
-          rushingScript[1] = "RB1 rushes up the middle for no game";
-          rushingScript[2] = "RB1 rushes to the right for a slight gain";
-          rushingScript[2] = "RB1 is stuffed for a loss";
-
-          document.getElementById('gameLog').innerHTML += rushingScript[i];
-          document.getElementById('gameLog').innerHTML += '<br/>';
-
-    }
 
 function homeTD (){
     homeScore = homeScore + td;
@@ -39,7 +29,6 @@ function homeFG (){
 
     console.log('homescore ', home);
     document.getElementById("home").innerHTML = home;
-
 
 }
 
@@ -59,7 +48,6 @@ function awayFG(){
     awayScore = awayScore + fg;
     away = awayScore;
 
-
     document.getElementById("away").innerHTML = away;
 
 
@@ -68,13 +56,46 @@ function awayFG(){
 function downChecker (){
 
 
-  currentDown = down++;
+  currentDown = currentDown + 1;
   console.log("current down is ", currentDown);
-  document.getElementById("currentDownDisplay").innerHTML = currentDown + " & " + yardsToGo;
+
+  rushingYards = Math.floor((Math.random() * 10) + 1);
+  console.log("rushing yards ==== ", rushingYards);
+  yardsToGo = yardsToGo - rushingYards;
+  console.log('yardsToGo ===', yardsToGo);
+  document.getElementById("currentDownDisplay").innerHTML = currentDown;
+  document.getElementById("yardsRemaining").innerHTML = yardsToGo;
+
+  rushingScripts(rushingYards);
 
   if (currentDown == 4){
     console.log("its 4th down!!!");
-    down = 1;
-  }
+    down = 1
 
+  } else if (yardsToGo < 0){
+
+      currentDown = 1;
+      yardsToGo = 10;
+      console.log("move the chains");
+      document.getElementById("yardsRemaining").innerHTML = yardsToGo;
+      document.getElementById("currentDownDisplay").innerHTML = currentDown;
+
+
+  }
 }
+
+
+function rushingScripts(rushingYards){
+    var i = 2;
+
+    // Math.floor((Math.random() * 3));
+    var rushingScript = new Array();
+          rushingScript[0] = "RB1 rushes to the left for 5 yards";
+          rushingScript[1] = "RB1 rushes up the middle for " + rushingYards + " yards";
+          rushingScript[2] = "RB1 rushes to the right for a slight gain";
+          rushingScript[2] = "RB1 rushes up the middle for " + rushingYards + " yards";
+
+          document.getElementById('gameLog').innerHTML += rushingScript[i];
+          document.getElementById('gameLog').innerHTML += '<br/>';
+
+    }

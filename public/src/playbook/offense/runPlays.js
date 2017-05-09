@@ -1,10 +1,11 @@
 
-
+var x5 = 0;
 function runPlayMiddle(){
 
 
       playCount = +playCount;
       playCount += 1;
+
 
       console.log("playcount = ", playCount);
 
@@ -19,6 +20,7 @@ function runPlayMiddle(){
           ct.scale.setTo(0.03);
         }
 
+      downChecker();
 
        var QBx = ct.x - 20;
        var QBy = ct.y;
@@ -237,8 +239,7 @@ function runPlayMiddle(){
 
 
                    }
-
-                   rushingScripts();
+                  //  runYardsGenerator();
                   //  game.physics.arcade.enable([qb, wr1, wr2, te1, te2, rb1, ct, rg, rt, lg, lt]);
 
 }
@@ -248,6 +249,8 @@ function runPlayLeft (){
           playCount = +playCount;
           playCount += 1;
 
+
+    downChecker();
           console.log("playcount = ", playCount);
 
           if(playCount == 1){
@@ -397,7 +400,6 @@ function runPlayLeft (){
    tweenG.start();
    tweenH.start();
 
-   rushingScripts();
 
    game.physics.arcade.enable([qb, wr1, wr2, te1, te2, rb1, ct, rg, rt, lg, lt]);
 
@@ -493,7 +495,12 @@ function runPlayRight(){
 
             playCount = +playCount;
             playCount += 1;
+            downChecker();
+            console.log("rushing yards =  ", rushingYards);
 
+            var x5  = rushingYards * 5.2;
+
+            console.log('coordinates ===== ', x5);
             console.log("playcount = ", playCount);
 
             if(playCount == 1){
@@ -628,13 +635,13 @@ function runPlayRight(){
           tweenB.start();
           tweenB.onComplete.add(function newlocation (playCount){
 
-              rbChoice3();
-               newBallSpotx = rb1.x;
-               newBallSpoty = rb1.y;
+        rbChoice3(x5);
+        //  newBallSpotx = rb1.x;
+        //  newBallSpoty = rb1.y;
 
-          console.log ('rb1y = ', rb1.y);
+          console.log ('rb1y = ', x5);
 
-          return newBallSpotx, newBallSpoty, playCount;
+          // return newBallSpotx, newBallSpoty, playCount;
           });
 
           tweenC.start();
@@ -644,24 +651,24 @@ function runPlayRight(){
           tweenG.start();
           tweenH.start();
 
-          rushingScripts();
+
           game.physics.arcade.enable([qb, wr1, wr2, te1, te2, rb1, ct, rg, rt, lg, lt]);
           // setTimeout(switchStateToHuddle,3000);
-          Base43Defense(passPlayLeft, ct.x);
+          // Base43Defense(runPlayLeft, ct.x);
 
           function rbChoice3(){
             //run left
-                  var y =3;
-
-                  // Math.floor((Math.random() * 3) + 1);
+                  var y =Math.floor((Math.random() * 3) + 1);
                   console.log(y);
                   console.log('rb1= ',rb1);
 
                  switch (y){
 
                  case 1:
+
+
                  var tweenB7 = game.add.tween(rb1).to({
-                   x:'+30',
+                   x: '+30',
                    y:'+40'
 
                  }, 700);
@@ -672,9 +679,10 @@ function runPlayRight(){
                    console.log(y);
                    newBallSpotx = rb1.x;
                    // newBallSpoty = rb1.y
+                   setTimeout(switchStateToHuddle,3000);
+
                    return newBallSpotx
 
-                   setTimeout(switchStateToHuddle,3000);
 
                  console.log("statement 1");
                });
@@ -695,12 +703,13 @@ function runPlayRight(){
                    console.log(y);
                    newBallSpotx = rb1.x;
                    // newBallSpoty = rb1.y
+                   setTimeout(switchStateToHuddle,3000);
+
                    return newBallSpotx
 
 
                });
 
-               setTimeout(switchStateToHuddle,3000);
 
 
                  console.log("statement 2");
@@ -724,12 +733,12 @@ function runPlayRight(){
                    console.log(y);
                    newBallSpotx = rb1.x;
                    // newBallSpoty = rb1.y\
+                   setTimeout(switchStateToHuddle,3000);
 
                    return newBallSpotx
 
                });
 
-              //  setTimeout(switchStateToHuddle,5000);
 
 
                  console.log("statement 3");

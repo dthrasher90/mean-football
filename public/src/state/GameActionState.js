@@ -45,9 +45,13 @@ var GameActionState  = {
 
           game.world.setBounds();
 
+
+
           var field = game.add.sprite(15, 50, 'field');
               field.scale.setTo(1.1);
               field.anchor.setTo(0);
+
+          
 
           function switchStateToCoachScreen(){
               game.state.add('HuddleState', HuddleState);

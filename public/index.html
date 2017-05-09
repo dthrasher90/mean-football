@@ -42,12 +42,14 @@
                     <p id="counter">15:00</p>
                     <p class="awayScore"> Away: </p> <p id="away">  </p>
                     <p id="currentDownDisplay"> </p>
+                    <p id="yardsRemaining"> </p>
+
                    <!-- <p id= "yardsRemaining">11 </p> -->
               </div>
               <button class="btn btn-info" onclick="homeTD()">home td</button>
               <button class="btn btn-info" onclick="homeFG()">home fg</button>
               <button class="btn btn-info" onclick="awayTD()">awaytd</button>
-              <button class="btn btn-info" onclick="awayFG()">away fg</button>
+              <button class="btn btn-info" onclick="rushingYards()">rushing yards</button>
               <button class="btn btn-info" onclick="physicsTest()">phsyics test</button>
 
 
@@ -99,9 +101,9 @@
                 game.state.start('bootState');
                 yoltor();
 
-      function stateChanger(){
-          game.state.add('actionRtoL', actionRtoL);
-          game.state.start('actionRtoL');
-      }
+            function stateChanger(){
+                game.state.add('actionRtoL', actionRtoL);
+                game.state.start('actionRtoL');
+            }
 
 </script>
