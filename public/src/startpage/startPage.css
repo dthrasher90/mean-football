@@ -1,0 +1,26 @@
+body{
+  font-family: "Press Start 2P", cursive;
+  background: black;
+  color: steelblue;
+  overflow: hidden;
+}
+
+
+h1 {
+    text-align: center;
+    font-size: 70px;
+}
+
+.startBtnRow{
+    text-align: center;
+}
+
+.introduction{
+
+    width: 600px;
+    margin: 0 auto;
+}
+
+p{
+    color: silver;
+}
